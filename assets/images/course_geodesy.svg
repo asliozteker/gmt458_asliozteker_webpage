@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <rect width="80" height="80" rx="14" fill="#d97706"/>
+  <!-- Teodolit / GNSS Anteni -->
+  <polygon points="40,24 48,46 32,46" fill="#ffffff"/>
+  <line x1="32" y1="46" x2="22" y2="64" stroke="#ffffff" stroke-width="3"/>
+  <line x1="48" y1="46" x2="58" y2="64" stroke="#ffffff" stroke-width="3"/>
+  <line x1="40" y1="46" x2="40" y2="64" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="40" cy="20" r="4" fill="#facc15"/>
+</svg>

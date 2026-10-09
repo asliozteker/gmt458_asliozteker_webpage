@@ -1,0 +1,893 @@
+:root {
+  /* Renk Paleti - Modern Geomatik / Web GIS Teması */
+  --primary: #0284c7;         /* Canlı Gökyüzü / GIS Mavisi */
+  --primary-hover: #0369a1;
+  --primary-light: #e0f2fe;
+  --primary-dark: #075985;
+  --accent: #10b981;          /* Geomatik Yeşil / Harita Vurgusu */
+  --accent-light: #d1fae5;
+  --text-main: #0f172a;       /* Slate 900 */
+  --text-muted: #64748b;      /* Slate 500 */
+  --text-light: #94a3b8;
+  --bg-main: #f8fafc;         /* Yumuşak Beyaz Arka Plan */
+  --bg-card: #ffffff;
+  --bg-alt: #f1f5f9;
+  --border-color: #e2e8f0;
+  --border-focus: #38bdf8;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --nav-height: 72px;
+}
+
+/* Sıfırlama ve Temel Ayarlar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================================================
+   SABİT ÜST MENÜ (STICKY NAVBAR) & HIZLI GEZİNME (GERİ TUŞUNA GEREK BIRAKMAYAN)
+   ========================================================================== */
+.navbar-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  transition: var(--transition);
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.brand-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+}
+
+.brand-sub {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 0.5rem;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.nav-link.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+/* Mobil Hamburger Menü */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--text-main);
+  font-size: 1.5rem;
+}
+
+/* Hızlı Sayfa Butonları (Sabit Alt Bar - Gezinme Kolaylığı) */
+.page-switch-bar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.switch-pill {
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-main);
+  transition: var(--transition);
+}
+
+.switch-pill:hover, .switch-pill.current {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.switch-pill.current {
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   LAYOUT VE GENEL KONTEYNERLER
+   ========================================================================== */
+.main-content {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+.section-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.section-tag {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  background: var(--primary-light);
+  border-radius: var(--radius-full);
+  margin-bottom: 0.6rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   HERO SECTION (ANASAYFA)
+   ========================================================================== */
+.hero-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 50%, #f0f9ff 100%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.5rem;
+  box-shadow: var(--shadow-md);
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+.hero-badge .pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  animation: pulse-ring 1.8s infinite;
+}
+
+.hero-title {
+  font-size: 2.7rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  margin-bottom: 1rem;
+}
+
+.hero-title .gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 1.8rem;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(2, 132, 199, 0.4);
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-alt);
+  border-color: var(--text-muted);
+  color: var(--text-main);
+}
+
+.hero-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.profile-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+  position: relative;
+}
+
+.profile-avatar {
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  border: 4px solid #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  position: relative;
+}
+
+.profile-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.profile-role {
+  font-size: 0.88rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.9rem;
+  margin-top: 0.9rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-num {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--primary);
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   HARİTA BÖLÜMÜ (MAP CONTAINER VE KONTROLLERİ)
+   ========================================================================== */
+.map-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.map-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.map-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.map-library-badge {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.badge-leaflet {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+.badge-openlayers {
+  background: #dbeafe;
+  color: #1d4ed8;
+  border: 1px solid #93c5fd;
+}
+
+.map-controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.map-action-btn {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: #ffffff;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.map-action-btn:hover {
+  background: var(--bg-alt);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+}
+
+#leafletMap, #openlayersMap {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.map-status-overlay {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  z-index: 500;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  max-width: 380px;
+  pointer-events: none;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.2rem;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.status-dot.warning {
+  background: #f59e0b;
+}
+
+.map-info-footer {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   ÖDEV 1 & ÖDEV 2 SORUN ÇÖZÜMLERİ BİLGİ KUTULARI (ASSIGNMENT OBJECTIVES)
+   ========================================================================== */
+.assignment-solution-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.solution-box {
+  background: var(--bg-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  position: relative;
+}
+
+.solution-box.issue1 {
+  border-left: 4px solid #f59e0b;
+}
+
+.solution-box.issue2 {
+  border-left: 4px solid #3b82f6;
+}
+
+.solution-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.solution-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.solution-badge {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+}
+
+.solution-desc {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.solution-code {
+  display: block;
+  background: #0f172a;
+  color: #38bdf8;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  margin-top: 0.6rem;
+  overflow-x: auto;
+}
+
+/* ==========================================================================
+   RESİMLİ BİLGİ TABLOLARI (TABULAR INFORMATION WITH IMAGES) (%10)
+   ========================================================================== */
+.table-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+
+.table-header-box {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fafafa;
+}
+
+.table-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.92rem;
+}
+
+.custom-table th {
+  background: var(--bg-alt);
+  color: var(--text-muted);
+  font-weight: 700;
+  padding: 0.9rem 1.25rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.custom-table td {
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+  color: var(--text-main);
+}
+
+.custom-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.table-entity {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.table-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  background: var(--bg-alt);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.table-entity-title {
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  margin-bottom: 0.15rem;
+}
+
+.table-entity-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+}
+
+.badge-success {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.badge-primary {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.badge-accent {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.badge-neutral {
+  background: var(--bg-alt);
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   YETKİNLİKLER VE PROJE KARTLARI
+   ========================================================================== */
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--border-focus);
+}
+
+.card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   FOOTER (ALT BİLGİ)
+   ========================================================================== */
+.footer {
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  padding: 2.5rem 1.5rem;
+  margin-top: auto;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-text {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-link {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.footer-link:hover {
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   RESPONSIVE UYUMLULUK
+   ========================================================================== */
+@media (max-width: 900px) {
+  .hero-card {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+  }
+  
+  .assignment-solution-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    flex-direction: column;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-link {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+  }
+
+  .map-wrapper {
+    height: 380px;
+  }
+
+  .custom-table {
+    display: block;
+    overflow-x: auto;
+  }
+}

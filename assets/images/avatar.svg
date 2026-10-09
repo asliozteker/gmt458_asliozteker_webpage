@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#avatarGrad)"/>
+  <!-- Kafa ve Gövde -->
+  <circle cx="60" cy="46" r="22" fill="#ffffff"/>
+  <path d="M26 100 C26 78, 42 74, 60 74 C78 74, 94 78, 94 100 Z" fill="#ffffff"/>
+  <!-- Haritacı Şapkası / Teodolit Sembolü İzi -->
+  <circle cx="60" cy="24" r="4" fill="#facc15"/>
+</svg>

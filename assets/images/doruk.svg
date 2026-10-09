@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="dorukGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#6d28d9" />
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="16" fill="url(#dorukGrad)"/>
+  <!-- Dağ / Doruk ve Nivelman / Teodolit Sembolü -->
+  <polygon points="50,22 80,78 20,78" fill="#4c1d95" opacity="0.4"/>
+  <polygon points="50,22 68,78 32,78" fill="#ffffff" opacity="0.9"/>
+  <circle cx="50" cy="22" r="5" fill="#facc15" stroke="#ffffff" stroke-width="1.5"/>
+  <line x1="25" y1="78" x2="75" y2="78" stroke="#ffffff" stroke-width="3"/>
+</svg>
