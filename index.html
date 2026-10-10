@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anasayfa | Web GIS & Geomatik Portfolyosu</title>
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  
+  <!-- Özel CSS Dosyaları -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SABİT ÜST MENÜ (STICKY NAVBAR)
+       Geri butonunu gerektirmeyen şık ve kesintisiz gezinme çubuğu
+       ========================================================================== -->
+  <header class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon">🌐</div>
+        <div>
+          <span>Geomatik Mühendisliği</span>
+          <span class="brand-sub">GMT 458 • Web GIS</span>
+        </div>
+      </a>
+
+      <!-- Mobil Menü Butonu -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç/Kapa">☰</button>
+
+      <!-- Gezinme Bağlantıları (Kişisel Menü) -->
+      <ul class="nav-links" id="navLinks">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link active">🏠 Anasayfa</a>
+        </li>
+        <li class="nav-item">
+          <a href="resume.html" class="nav-link">📄 Özgeçmiş & Yetkinlikler</a>
+        </li>
+        <li class="nav-item">
+          <a href="courses.html" class="nav-link">📚 Geçmiş ve Aktif Dersler</a>
+        </li>
+        <li class="nav-item">
+          <a href="projects.html" class="nav-link">🛰️ Projeler & Web GIS</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Sabit Hızlı Sayfa Butonları (Geri Tuşuna İhtiyaç Bırakmayan Doğrudan Geçiş Barı) -->
+    <div class="page-switch-bar">
+      <span style="font-size:0.8rem; color:var(--text-muted); font-weight:600; display:inline-flex; align-items:center; gap:4px;">
+        ⚡ Hızlı Geçiş:
+      </span>
+      <a href="index.html" class="switch-pill current">1. Anasayfa</a>
+      <a href="resume.html" class="switch-pill">2. Özgeçmiş & Yetkinlikler</a>
+      <a href="courses.html" class="switch-pill">3. Geçmiş ve Aktif Dersler</a>
+      <a href="projects.html" class="switch-pill">4. Projeler</a>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       ANA İÇERİK (HERO & ANKARA LEAFLET HARİTASI)
+       ========================================================================== -->
+  <main class="main-content">
+    
+    <!-- Hero Bölümü -->
+    <section class="hero-card anim-fade-in">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          <span>Hacettepe Üniversitesi • Harita / Geomatik Mühendisliği</span>
+        </div>
+        <h1 class="hero-title">
+          Mekânsal Veri ve <br>
+          <span class="gradient-text">Web GIS Teknolojileri</span>
+        </h1>
+        <p class="hero-description">
+          Merhaba! Coğrafi Bilgi Sistemleri (CBS), uzaktan algılama, fotogrametri ve açık kaynaklı web haritacılığı (Leaflet, OpenLayers) alanlarında projeler geliştiren bir Geomatik Mühendisi adayıyım.
+        </p>
+        <div class="hero-actions">
+          <a href="#akademikHarita" class="btn btn-primary">
+            🗺️ Akademik Haritayı İncele
+          </a>
+          <a href="resume.html" class="btn btn-secondary">
+            📄 Özgeçmiş & Stajlar
+          </a>
+          <a href="courses.html" class="btn btn-secondary">
+            📚 Dersler Tablosu
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="profile-card anim-float">
+          <div class="profile-avatar">
+            <img src="assets/images/avatar.svg" alt="Profil Resmi" style="width:100%; height:100%; border-radius:50%;">
+          </div>
+          <h2 class="profile-name">Geomatik Mühendisi</h2>
+          <p class="profile-role">Hacettepe Üniversitesi</p>
+          <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1rem;">
+            Ankara, Türkiye • GMT 458 Web GIS
+          </p>
+          <div class="profile-stats">
+            <div class="stat-item">
+              <span class="stat-num">4+</span>
+              <span class="stat-label">Web Sayfası</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">2</span>
+              <span class="stat-label">Canlı Harita</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">3</span>
+              <span class="stat-label">Staj Noktası</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         HARİTA 1: AKADEMİK YAŞAMIM (ANKARA / HACETTEPE GEOMATİK MÜHENDİSLİĞİ) - LEAFLET
+         ========================================================================== -->
+    <section class="map-card anim-fade-in anim-delay-1" id="akademikHarita">
+      <div class="map-header">
+        <div class="map-title-wrap">
+          <div class="brand-icon" style="background:#15803d;">🛰️</div>
+          <div>
+            <h2 style="font-size:1.4rem; font-weight:800; color:var(--text-main);">
+              Akademik Yaşamım (Ankara / Beytepe)
+            </h2>
+            <p style="font-size:0.85rem; color:var(--text-muted);">
+              Hacettepe Üniversitesi Geomatik (Harita) Mühendisliği Bölümü Konumu
+            </p>
+          </div>
+        </div>
+        <div class="map-controls-bar">
+          <span class="map-library-badge badge-leaflet">🌿 Leaflet v1.9.4</span>
+          <button class="map-action-btn" id="btnFocusGeomatik">
+            🎯 Bölüme Odaklan (Beytepe)
+          </button>
+          <button class="map-action-btn" id="btnFocusAnkara">
+            🏛️ Ankara Genel Görünüm
+          </button>
+        </div>
+      </div>
+
+      <!-- Leaflet Harita Kapsayıcısı -->
+      <div class="map-wrapper">
+        <div id="leafletMap"></div>
+        
+        <!-- Canlı Zoom ve Issue 1 Durum Bildirimi -->
+        <div class="map-status-overlay">
+          <div class="status-indicator">
+            <span class="status-dot"></span>
+            <span id="leafletZoomStatus">Zoom Seviyesi Hesaplanıyor...</span>
+          </div>
+          <span style="font-size:0.75rem; color:var(--text-muted);">
+            İpucu: Haritada uzaklaşıp yaklaşarak Issue 1 zoom eşiği ve Issue 2 dünya tekrarı korumasını test edebilirsiniz.
+          </span>
+        </div>
+      </div>
+
+      <div class="map-info-footer">
+        <div>
+          <strong>İşaretli Konum:</strong> Hacettepe Üniversitesi Beytepe Kampüsü, Geomatik Müh. Bölümü
+        </div>
+        <div>
+          <strong>Koordinatlar:</strong> 39.865742° K, 32.733950° D (WGS84)
+        </div>
+      </div>
+
+      <!-- Ödev Yönergesi: Issue 1 & Issue 2 Çözüm Rapor Kutuları -->
+      <div class="assignment-solution-grid">
+        <div class="solution-box issue1">
+          <div class="solution-header">
+            <span class="solution-title">⚡ Issue 1: Marker Zoom Eşiği (Threshold)</span>
+            <span class="solution-badge" style="color:#b45309; background:#fef3c7;">%10 Puan</span>
+          </div>
+          <p class="solution-desc">
+            Çok sayıda işaretçinin haritada üst üste binip okunabilirliği bozmasını önlemek için <code>ZOOM_THRESHOLD = 15</code> eşik değeri belirlenmiştir. Uzak bakışta sadece ana bölüm binası görünürken, yakınlaşıldığında (Zoom ≥ 15) alt araştırma laboratuvarları ve GNSS istasyonları otomatik olarak eklenir.
+          </p>
+          <code class="solution-code">
+            if (map.getZoom() >= 15) { map.addLayer(subMarkers); } else { map.removeLayer(subMarkers); }
+          </code>
+        </div>
+
+        <div class="solution-box issue2">
+          <div class="solution-header">
+            <span class="solution-title">🌍 Issue 2: Dünyanın Tekrarlanması (Earth Repeating)</span>
+            <span class="solution-badge" style="color:#1d4ed8; background:#dbeafe;">%10 Puan</span>
+          </div>
+          <p class="solution-desc">
+            Harita uzaklaştırıldığında dünyanın doğu-batı ekseninde sonsuz yatay kopyalar oluşturması, <code>noWrap: true</code> karo ayarı ve sınır kısıtlaması (<code>maxBounds</code> & <code>maxBoundsViscosity: 1.0</code>) ile tamamen engellenmiştir. Harita tek bir gerçek dünya sınırı içinde sabit kalır.
+          </p>
+          <code class="solution-code">
+            L.tileLayer(url, { noWrap: true, bounds: [[-85, -180], [85, 180]] });
+            map.setMaxBounds([[-85, -180], [85, 180]]);
+          </code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Yetkinlik Alanları Özeti -->
+    <section>
+      <div class="section-header">
+        <span class="section-tag">Uzmanlık Alanları</span>
+        <h2 class="section-title">Geomatik & CBS Çalışma Odakları</h2>
+        <p class="section-subtitle">
+          Mekânsal verinin toplanması, analiz edilmesi, modellenmesi ve web üzerinde sunulması süreçlerindeki temel disiplinler.
+        </p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="card card-hover-effect">
+          <div class="card-icon">🗺️</div>
+          <h3 class="card-title">Web Haritacılığı (Web GIS)</h3>
+          <p class="card-text">
+            Leaflet ve OpenLayers kütüphaneleri ile dinamik, etkileşimli ve standartlara (OGC, WMS, WFS, GeoJSON) uygun web haritalarının geliştirilmesi.
+          </p>
+        </div>
+
+        <div class="card card-hover-effect">
+          <div class="card-icon">🛰️</div>
+          <h3 class="card-title">Uzaktan Algılama</h3>
+          <p class="card-text">
+            Optik ve multispektral uydu görüntülerinin (Sentinel-2, Landsat) işlenmesi, bitki örtüsü indisleri (NDVI) ve arazi örtüsü sınıflandırması.
+          </p>
+        </div>
+
+        <div class="card card-hover-effect">
+          <div class="card-icon">📐</div>
+          <h3 class="card-title">Mühendislik Ölçmeleri & Jeodezi</h3>
+          <p class="card-text">
+            Yüksek hassasiyetli GNSS RTK ölçümleri, total station uygulamaları, deformasyon analizleri ve koordinat dönüşüm sistemleri.
+          </p>
+        </div>
+
+        <div class="card card-hover-effect">
+          <div class="card-icon">🗄️</div>
+          <h3 class="card-title">Mekânsal Veritabanları</h3>
+          <p class="card-text">
+            PostgreSQL ve PostGIS altyapısı üzerinde mekânsal SQL sorguları, tampon bölge (buffer) ve kesişim (intersection) analizleri.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       ALT BİLGİ (FOOTER)
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-text">
+        <strong>Hacettepe Üniversitesi Geomatik Mühendisliği Bölümü</strong><br>
+        GMT 458 – Web GIS • Ödev 1: Kişisel Web Sayfası (Ekim 2026)
+      </div>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Anasayfa</a>
+        <a href="resume.html" class="footer-link">Özgeçmiş & Stajlar</a>
+        <a href="courses.html" class="footer-link">Geçmiş ve Aktif Dersler</a>
+        <a href="projects.html" class="footer-link">Projeler</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- Özel JS Dosyaları -->
+  <script src="js/leaflet-map.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

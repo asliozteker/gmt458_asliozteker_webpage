@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geçmiş ve Aktif Dersler | Web GIS Portfolyosu</title>
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Özel CSS Dosyaları -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SABİT ÜST MENÜ (STICKY NAVBAR)
+       ========================================================================== -->
+  <header class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon">🌐</div>
+        <div>
+          <span>Geomatik Mühendisliği</span>
+          <span class="brand-sub">GMT 458 • Web GIS</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç/Kapa">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">🏠 Anasayfa</a>
+        </li>
+        <li class="nav-item">
+          <a href="resume.html" class="nav-link">📄 Özgeçmiş & Yetkinlikler</a>
+        </li>
+        <li class="nav-item">
+          <a href="courses.html" class="nav-link active">📚 Geçmiş ve Aktif Dersler</a>
+        </li>
+        <li class="nav-item">
+          <a href="projects.html" class="nav-link">🛰️ Projeler & Web GIS</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Sabit Hızlı Sayfa Butonları -->
+    <div class="page-switch-bar">
+      <span style="font-size:0.8rem; color:var(--text-muted); font-weight:600; display:inline-flex; align-items:center; gap:4px;">
+        ⚡ Hızlı Geçiş:
+      </span>
+      <a href="index.html" class="switch-pill">1. Anasayfa</a>
+      <a href="resume.html" class="switch-pill">2. Özgeçmiş & Yetkinlikler</a>
+      <a href="courses.html" class="switch-pill current">3. Geçmiş ve Aktif Dersler</a>
+      <a href="projects.html" class="switch-pill">4. Projeler</a>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       ANA İÇERİK
+       ========================================================================== -->
+  <main class="main-content">
+    
+    <!-- Sayfa Başlığı -->
+    <div class="section-header anim-fade-in">
+      <span class="section-tag">Akademik Müfredat</span>
+      <h1 class="section-title">Geçmiş ve Aktif Dersler</h1>
+      <p class="section-subtitle">
+        Hacettepe Üniversitesi Geomatik Mühendisliği lisans programı kapsamında aldığım aktif dönem dersleri ve tamamlanan geçmiş uzmanlık dersleri.
+      </p>
+    </div>
+
+    <!-- Akademik İstatistik Özeti -->
+    <div class="grid-cards anim-fade-in anim-delay-1" style="margin-bottom: 2rem;">
+      <div class="card card-hover-effect">
+        <div class="card-icon" style="background:#e0f2fe; color:#0284c7;">🎓</div>
+        <div class="card-title">Bölüm & Fakülte</div>
+        <p class="card-text">
+          Hacettepe Üniversitesi Mühendislik Fakültesi, Geomatik (Harita) Mühendisliği Bölümü (Beytepe Kampüsü)
+        </p>
+      </div>
+
+      <div class="card card-hover-effect">
+        <div class="card-icon" style="background:#dcfce7; color:#15803d;">📊</div>
+        <div class="card-title">Genel Not Ortalaması</div>
+        <p class="card-text">
+          <strong>3.62 / 4.00</strong> (Onur Öğrencisi Derecesi) • Tamamlanan AKTS: 195 / 240
+        </p>
+      </div>
+
+      <div class="card card-hover-effect">
+        <div class="card-icon" style="background:#fef3c7; color:#b45309;">🌐</div>
+        <div class="card-title">Uzmanlık Alanı</div>
+        <p class="card-text">
+          Web CBS, Açık Kaynak Mekânsal Veri Analitiği, Uydu Jeodezisi ve Sayısal Fotogrametri
+        </p>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         RESİMLİ BİLGİ TABLOSU 1: AKTİF DÖNEM DERSLERİ (GÜZ 2026) (%10)
+         ========================================================================== -->
+    <section class="table-container anim-fade-in anim-delay-2">
+      <div class="table-header-box">
+        <h3 class="table-title">
+          <span>🟢</span> Aktif Dönem Dersleri (2026-2027 Güz Yarıyılı)
+        </h3>
+        <span class="badge badge-success">4 Aktif Ders</span>
+      </div>
+
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Ders Kodu & Adı</th>
+            <th>Ders Türü & Kredi</th>
+            <th>Öğrenim Çıktıları & Teknolojiler</th>
+            <th>Laboratuvar / Uygulama</th>
+            <th>Durum</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="table-entity">
+                <img src="assets/images/course_webgis.svg" alt="GMT 458 Web GIS" class="table-thumb">
+                <div>
+                  <div class="table-entity-title">GMT 458 – Web GIS</div>
+                  <div class="table-entity-sub">Zorunlu / Seçmeli Uzmanlık Dersi</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <strong>3 Kredi (5 AKTS)</strong><br>
+              <span style="font-size:0.75rem; color:var(--text-muted);">Teori + Laboratuvar</span>
+            </td>
+            <td>
+              <span class="badge badge-primary">Leaflet</span>
+              <span class="badge badge-primary">OpenLayers</span>
+              <span class="badge badge-primary">HTML5/CSS3</span>
+              <span class="badge badge-primary">GeoJSON</span>
+              <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">
+                Web tabanlı CBS mimarisi, istemci-sunucu etkileşimi, dinamik harita katmanları ve mekânsal görselleştirme.
+              </p>
+            </td>
+            <td>
+              <span>Harita Lab - Beytepe</span>
+            </td>
+            <td>
+              <span class="badge badge-success">● Devam Ediyor</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="table-entity">
+                <img src="assets/images/course_photo.svg" alt="Fotogrametri" class="table-thumb">
+                <div>
+                  <div class="table-entity-title">GMT 401 – Sayısal Fotogrametri & İHA</div>
+                  <div class="table-entity-sub">Mesleki Uzmanlık Dersi</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <strong>3 Kredi (5 AKTS)</strong><br>
+              <span style="font-size:0.75rem; color:var(--text-muted);">Teori + Uygulama</span>
+            </td>
+            <td>
+              <span class="badge badge-neutral">Agisoft Metashape</span>
+              <span class="badge badge-neutral">Ortofoto</span>
+              <span class="badge badge-neutral">Nokta Bulutu</span>
+              <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">
+                İHA görüntüleri ile 3B arazi modelleme, SfM algoritmaları ve sayısal yükseklik modeli (DEM) üretimi.
+              </p>
+            </td>
+            <td>
+              <span>Fotogrametri Laboratuvarı</span>
+            </td>
+            <td>
+              <span class="badge badge-success">● Devam Ediyor</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="table-entity">
+                <img src="assets/images/course_geodesy.svg" alt="Uydu Jeodezisi" class="table-thumb">
+                <div>
+                  <div class="table-entity-title">GMT 435 – Uydu Jeodezisi ve GNSS</div>
+                  <div class="table-entity-sub">İleri Jeodezi Grubu</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <strong>3 Kredi (5 AKTS)</strong><br>
+              <span style="font-size:0.75rem; color:var(--text-muted);">Teori + Saha Ölçümü</span>
+            </td>
+            <td>
+              <span class="badge badge-neutral">RTK GNSS</span>
+              <span class="badge badge-neutral">TUSAGA-Aktif (CORS)</span>
+              <span class="badge badge-neutral">Bernese GNSS</span>
+              <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">
+                GPS, GLONASS, Galileo uydu sinyal analizi, bağıl konum belirleme ve troposferik/iyonosferik hata modelleme.
+              </p>
+            </td>
+            <td>
+              <span>Beytepe GNSS İstasyonu</span>
+            </td>
+            <td>
+              <span class="badge badge-success">● Devam Ediyor</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="table-entity">
+                <img src="assets/images/course_rs.svg" alt="Mekânsal Veri Analizi" class="table-thumb">
+                <div>
+                  <div class="table-entity-title">GMT 423 – Mekânsal Karar Destek Sistemleri</div>
+                  <div class="table-entity-sub">Seçmeli CBS Dersi</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <strong>3 Kredi (5 AKTS)</strong><br>
+              <span style="font-size:0.75rem; color:var(--text-muted);">Proje Tabanlı</span>
+            </td>
+            <td>
+              <span class="badge badge-neutral">AHP (Analitik Hiyerarşi)</span>
+              <span class="badge badge-neutral">QGIS</span>
+              <span class="badge badge-neutral">Python</span>
+              <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">
+                Çok ölçütlü karar verme yöntemleri, yer seçimi analizleri ve kentsel risk duyarlılık haritaları.
+              </p>
+            </td>
+            <td>
+              <span>CBS Laboratuvarı</span>
+            </td>
+            <td>
+              <span class="badge badge-success">● Devam Ediyor</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ==========================================================================
+         RESİMLİ BİLGİ TABLOSU 2: GEÇMİŞ BAŞARILI DERSLER (RESİMLİ VE PUANLI) (%10)
+         ========================================================================== -->
+    <section class="table-container anim-fade-in anim-delay-3">
+      <div class="table-header-box">
+        <h3 class="table-title">
+          <span>🏆</span> Geçmiş Dönemlerde Tamamlanan Temel Dersler
+        </h3>
+        <span class="badge badge-primary">Başarıyla Tamamlandı</span>
+      </div>
+
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Ders Bilgisi</th>
+            <th>Dönem</th>
+            <th>Kapsam & Yazılımlar</th>
+            <th>Harf Notu</th>
+            <th>Katsayı</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="table-entity">
+                <img src="assets/images/course_rs.svg" alt="Uzaktan Algılama" class="table-thumb">
+                <div>
+                  <div class="table-entity-title">GMT 352 – Uzaktan Algılama</div>
+                  <div class="table-entity-sub">Uydu Görüntü İşleme & Analiz</div>
+                </div>
+              </div>
+            </td>
+            <td>Bahar 2026</td>
+            <td>
+              <span class="badge badge-neutral">SNAP</span>
+              <span class="badge badge-neutral">Sentinel-2</span>
+              <span class="badge badge-neutral">NDVI / NDWI</span>
+            </td>
+            <td><span class="badge badge-success">A1</span></td>
+            <td><strong>4.00</strong></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="table-entity">
+                <img src="assets/images/course_webgis.svg" alt="Coğrafi Veritabanları" class="table-thumb">
+                <div>
+                  <div class="table-entity-title">GMT 312 – Coğrafi Veritabanı Sistemleri</div>
+                  <div class="table-entity-sub">PostGIS & Mekânsal SQL</div>
+                </div>
+              </div>
+            </td>
+            <td>Güz 2025</td>
+            <td>
+              <span class="badge badge-neutral">PostgreSQL</span>
+              <span class="badge badge-neutral">PostGIS</span>
+              <span class="badge badge-neutral">ST_Intersects</span>
+            </td>
+            <td><span class="badge badge-success">A1</span></td>
+            <td><strong>4.00</strong></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="table-entity">
+                <img src="assets/images/course_geodesy.svg" alt="Jeodezik Ağlar" class="table-thumb">
+                <div>
+                  <div class="table-entity-title">GMT 341 – Jeodezik Ağ Tasarımı ve Dengeleme</div>
+                  <div class="table-entity-sub">En Küçük Kareler Yöntemi</div>
+                </div>
+              </div>
+            </td>
+            <td>Bahar 2025</td>
+            <td>
+              <span class="badge badge-neutral">Matlab</span>
+              <span class="badge badge-neutral">Hata Teorisi</span>
+              <span class="badge badge-neutral">GPS Vektörleri</span>
+            </td>
+            <td><span class="badge badge-primary">A2</span></td>
+            <td><strong>3.75</strong></td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="table-entity">
+                <img src="assets/images/course_photo.svg" alt="Kartografya" class="table-thumb">
+                <div>
+                  <div class="table-entity-title">GMT 224 – Kartografya ve Harita Tasarımı</div>
+                  <div class="table-entity-sub">Tematik Haritacılık & Genelleştirme</div>
+                </div>
+              </div>
+            </td>
+            <td>Güz 2024</td>
+            <td>
+              <span class="badge badge-neutral">ArcGIS</span>
+              <span class="badge badge-neutral">Semboloji</span>
+              <span class="badge badge-neutral">Projeksiyonlar</span>
+            </td>
+            <td><span class="badge badge-success">A1</span></td>
+            <td><strong>4.00</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       ALT BİLGİ (FOOTER)
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-text">
+        <strong>Hacettepe Üniversitesi Geomatik Mühendisliği Bölümü</strong><br>
+        GMT 458 – Web GIS • Ödev 1: Kişisel Web Sayfası
+      </div>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Anasayfa</a>
+        <a href="resume.html" class="footer-link">Özgeçmiş & Stajlar</a>
+        <a href="courses.html" class="footer-link">Geçmiş ve Aktif Dersler</a>
+        <a href="projects.html" class="footer-link">Projeler</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Özel JS Dosyası -->
+  <script src="js/main.js"></script>
+</body>
+</html>
