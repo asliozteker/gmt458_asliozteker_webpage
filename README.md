@@ -14,8 +14,8 @@
 | **Tabular Info with Images** | **%10** | Structured data tables on `resume.html` and `courses.html` incorporating custom vector SVG emblems (`assets/images/`), roles, ECTS credits, and grades. |
 | **Leaflet Map (Ankara)** | **%10** | Embedded on `index.html`, centered on Hacettepe University Department of Geomatics Engineering (`39.865742° N, 32.733950° E`) with Esri Street/Satellite layers and custom pin. |
 | **OpenLayers Map (Turkey)** | **%10** | Embedded on `resume.html`, providing Turkey overview and Ankara zoom focus for 3 internship sites (Highways 4th Directorate, Küre Engineering, Doruk Surveying). |
-| **Issue 1: Zoom Threshold** | **%10** | Prevents marker overlap at small scales. In OpenLayers, individual markers only appear when zoomed in (`minZoom: 11`). In Leaflet, campus sub-labs toggle at `Zoom >= 15`. |
-| **Issue 2: Earth Repeating** | **%10** | Eliminates infinite horizontal world tile replication using `wrapX: false` in OpenLayers and `noWrap: true` + `maxBounds` in Leaflet. |
+| **Marker Zoom Threshold** | **%10** | Prevents marker overlap at small scales. In OpenLayers, individual markers only appear when zoomed in (`minZoom: 11`). In Leaflet, campus sub-labs toggle at `Zoom >= 15`. |
+| **Earth Repeating Prevention** | **%10** | Eliminates infinite horizontal world tile replication using `wrapX: false` in OpenLayers and `noWrap: true` + `maxBounds` in Leaflet. |
 | **Git Usage (Multi-day)** | **%5** | Git repository includes 8+ clean commits scheduled across 3 separate days (`2026-10-09`, `2026-10-10`, `2026-10-11`) under `asliozteker`. |
 | **Design & Quality** | **%10** | Minimalist, responsive academic layout inspired by Hacettepe faculty personal pages; 100% free of 403 tile errors and API key watermarks. |
 
@@ -39,10 +39,10 @@
 
 ## 🎯 Technical GIS Solutions
 
-* **Issue 1 (Marker Zoom Threshold):**  
+* **Marker Zoom Threshold & Clustering:**  
   At country overview (Zoom < 11), individual markers are grouped into a regional cluster to prevent overlapping (especially between Küre Engineering and Doruk Surveying, ~160 m apart). Individual markers only appear when zoomed in (`minZoom: 11` in OpenLayers; `Zoom >= 15` in Leaflet).
 
-* **Issue 2 (Earth Repeating Horizontally):**  
+* **Preventing Horizontal World Repeating:**  
   Prevented tile repetition when zooming out by using `wrapX: false` on OpenLayers XYZ tile source and `noWrap: true` with `maxBounds` in Leaflet.
 
 ---

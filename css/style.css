@@ -429,31 +429,7 @@ h2.section-heading {
   color: var(--text-secondary);
 }
 
-/* ==========================================================================
-   TECHNICAL NOTES (ISSUE 1 & 2 EXPLANATION BOX)
-   ========================================================================== */
-.technical-notes {
-  background-color: #fafafa;
-  border: 1px solid var(--border-light);
-  border-left: 3px solid var(--primary-color);
-  padding: 0.9rem 1.1rem;
-  margin-top: 1.25rem;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
 
-.technical-notes strong {
-  color: var(--text-primary);
-}
-
-.technical-notes code {
-  background: #f0f0f0;
-  padding: 0.1rem 0.35rem;
-  border-radius: 3px;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.82rem;
-}
 
 /* ==========================================================================
    SIMPLE LISTS
