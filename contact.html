@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Aslı Özteker - Web GIS Portfolio</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- STICKY TOP NAVBAR -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="site-title">
+        <a href="index.html">Aslı Özteker</a>
+        <span class="site-subtitle">| GMT 458 Web GIS</span>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">☰</button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="resume.html">Resume & Skills</a></li>
+        <li class="nav-item"><a href="courses.html">Past & Active Courses</a></li>
+        <li class="nav-item"><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT WRAPPER -->
+  <main class="site-wrapper fade-in">
+    <div class="content-card">
+      <h1 class="page-title">Contact & Communication</h1>
+      <p class="section-lead">
+        Academic contact details, institutional email, and campus location for GMT 458 Web GIS studies.
+      </p>
+
+      <!-- CONTACT CARDS GRID -->
+      <div class="contact-grid">
+        
+        <!-- 1. Institutional Email Card (Square Mail Icon) -->
+        <div class="contact-item-card">
+          <div class="contact-icon-square">
+            ✉
+          </div>
+          <div class="contact-info-block">
+            <div class="contact-info-title">Institutional Email</div>
+            <div class="contact-info-value">
+              <a href="mailto:asliozteker@hacettepe.edu.tr">asliozteker@hacettepe.edu.tr</a>
+            </div>
+            <small style="color: #64748b; font-size: 0.8rem; display: block; margin-top: 3px;">
+              Primary contact for academic inquiries
+            </small>
+          </div>
+        </div>
+
+        <!-- 2. Location Card (Animated Location Pin) -->
+        <div class="contact-item-card">
+          <div class="contact-icon-square">
+            <span class="anim-pin-bounce">📍</span>
+          </div>
+          <div class="contact-info-block">
+            <div class="contact-info-title">Location</div>
+            <div class="contact-info-value">
+              <strong>Ankara, Turkey</strong>
+            </div>
+            <small style="color: #64748b; font-size: 0.8rem; display: block; margin-top: 3px;">
+              Hacettepe University, Beytepe Campus, 06800 Çankaya, Ankara
+            </small>
+          </div>
+        </div>
+
+        <!-- 3. Department Card -->
+        <div class="contact-item-card">
+          <div class="contact-icon-square">
+            🏛️
+          </div>
+          <div class="contact-info-block">
+            <div class="contact-info-title">Academic Department</div>
+            <div class="contact-info-value">
+              Department of Geomatics Engineering
+            </div>
+            <small style="color: #64748b; font-size: 0.8rem; display: block; margin-top: 3px;">
+              Faculty of Engineering, Beytepe
+            </small>
+          </div>
+        </div>
+
+        <!-- 4. Course Laboratory Card -->
+        <div class="contact-item-card">
+          <div class="contact-icon-square">
+            💻
+          </div>
+          <div class="contact-info-block">
+            <div class="contact-info-title">Laboratory / Course</div>
+            <div class="contact-info-value">
+              GMT 458 – Web GIS
+            </div>
+            <small style="color: #64748b; font-size: 0.8rem; display: block; margin-top: 3px;">
+              Photogrammetry & GIS Computer Lab
+            </small>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Links & Campus Note -->
+      <h2 class="section-heading" style="margin-top: 2rem;">
+        <span>Campus & Office Information</span>
+      </h2>
+      <ul class="simple-list">
+        <li>
+          <strong>Address:</strong> Hacettepe University, Beytepe Campus, Faculty of Engineering, Department of Geomatics Engineering, 06800 Çankaya / Ankara, Turkey.
+        </li>
+        <li>
+          <strong>Course Information:</strong> GMT 458 – Web Geographic Information Systems (Fall 2026-2027).
+        </li>
+        <li>
+          <strong>Interactive Map:</strong> You can view the exact geographic location on the Leaflet campus map on the <a href="index.html">Home page</a>.
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>Hacettepe University Department of Geomatics Engineering • GMT 458 Web GIS</span>
+      <span>Ankara, 2026</span>
+    </div>
+  </footer>
+
+  <!-- JavaScript File -->
+  <script src="js/main.js"></script>
+</body>
+</html>

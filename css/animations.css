@@ -76,7 +76,22 @@
   margin-right: 4px;
 }
 
-/* 5. Interactive Button & Control Transitions */
+/* 5. Location Pin Bounce Animation */
+@keyframes pinBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.anim-pin-bounce {
+  display: inline-block;
+  animation: pinBounce 1.8s infinite ease-in-out;
+}
+
+/* 6. Interactive Button & Control Transitions */
 .nav-item a, .map-btn, a {
   transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }

@@ -42,7 +42,7 @@ A clean, minimalist personal academic portfolio and web mapping site developed f
 1. `index.html` – Home & Hacettepe Leaflet Map
 2. `resume.html` – Resume, OpenLayers Internship Map & Experience Table
 3. `courses.html` – Past & Active Courses Table with Icons
-4. `projects.html` – Selected GIS & Academic Projects
+4. `contact.html` – Academic Contact, Institutional Email & Location
 
 ---
 

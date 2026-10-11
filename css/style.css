@@ -480,6 +480,101 @@ h2.section-heading {
 }
 
 /* ==========================================================================
+   CONTACT PAGE & ICONS (SQUARE EMAIL BADGE & ANIMATED PIN)
+   ========================================================================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.contact-item-card {
+  background: #fafafa;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all 0.2s ease;
+}
+
+.contact-item-card:hover {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.contact-icon-square {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.contact-info-block {
+  flex: 1;
+}
+
+.contact-info-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+
+.contact-info-value {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+
+.contact-info-value a {
+  font-weight: 600;
+  word-break: break-all;
+}
+
+/* Inline Mini Badges for Header (Square Mail & Animated Location) */
+.contact-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+}
+
+.contact-badge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-secondary);
+}
+
+.contact-icon-mini {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+/* ==========================================================================
    FOOTER
    ========================================================================== */
 .site-footer {
