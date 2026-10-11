@@ -2,8 +2,8 @@
  * OpenLayers Map - Internship Experiences (Resume Page)
  * Turkey and Ankara Focused Interactive Map
  * 
- * Uses reliable CartoDB Voyager and Esri basemaps to prevent 403 Access Blocked errors.
- * GMT 458 Assignment Objectives:
+ * Uses reliable, non-watermarked, free Esri Street and Satellite layers (No API key needed, No 403).
+ * GMT 458 Objectives:
  * - Issue 1 Solution: Zoom threshold (minZoom: 11) to prevent marker overlap at smaller scales
  * - Issue 2 Solution: Prevent earth repeating when zoomed out (wrapX: false & view extent)
  */
@@ -56,24 +56,24 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   // ==========================================================================
-  // BASEMAP LAYERS (NON-BLOCKING CARTO AND ESRI SERVICES)
+  // BASEMAP LAYERS (FREE, UNRESTRICTED ESRI SERVICES - ZERO WATERMARK)
   // ==========================================================================
   const maxExtent = ol.proj.get('EPSG:3857').getExtent();
 
-  // CartoDB Voyager Basemap (OpenStreetMap data, CORS-friendly, no 403 blocks)
-  const cartoVoyagerSource = new ol.source.XYZ({
-    url: 'https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
-    attributions: '&copy; OpenStreetMap contributors &copy; CARTO',
+  // Esri World Street Map (Default Base Layer)
+  const esriStreetSource = new ol.source.XYZ({
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+    attributions: 'Tiles &copy; Esri',
     wrapX: false, // ISSUE 2: Prevents horizontal repetition of world tiles
     maxZoom: 19
   });
 
-  const cartoLayer = new ol.layer.Tile({
-    source: cartoVoyagerSource,
+  const streetLayer = new ol.layer.Tile({
+    source: esriStreetSource,
     visible: true
   });
 
-  // Esri World Imagery (Satellite)
+  // Esri World Imagery (Satellite Layer)
   const esriSatelliteSource = new ol.source.XYZ({
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     attributions: 'Tiles &copy; Esri',
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     features: detailFeatures
   });
 
-  // Professional Marker Style
+  // Marker Style
   const createMarkerStyle = (item) => {
     return [
       new ol.style.Style({
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
           offsetY: item.textOffset[1],
           fill: new ol.style.Fill({ color: '#111827' }),
           stroke: new ol.style.Stroke({ color: '#ffffff', width: 4 }),
-          backgroundFill: new ol.style.Fill({ color: 'rgba(255, 255, 255, 0.92)' }),
+          backgroundFill: new ol.style.Fill({ color: 'rgba(255, 255, 255, 0.94)' }),
           backgroundStroke: new ol.style.Stroke({ color: '#d1d5db', width: 1 }),
           padding: [3, 6, 3, 6]
         })
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const map = new ol.Map({
     target: 'openlayersMap',
-    layers: [cartoLayer, satelliteLayer, clusterVectorLayer, detailVectorLayer],
+    layers: [streetLayer, satelliteLayer, clusterVectorLayer, detailVectorLayer],
     view: view
   });
 
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnToggleLayer.addEventListener('click', () => {
       const isSat = satelliteLayer.getVisible();
       satelliteLayer.setVisible(!isSat);
-      cartoLayer.setVisible(isSat);
+      streetLayer.setVisible(isSat);
       btnToggleLayer.textContent = isSat ? "🗺️ Switch to Satellite" : "🗺️ Switch to Street Map";
     });
   }
