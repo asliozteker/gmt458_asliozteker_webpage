@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeler & Web GIS | Web GIS Portfolyosu</title>
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Özel CSS Dosyaları -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SABİT ÜST MENÜ (STICKY NAVBAR)
+       ========================================================================== -->
+  <header class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon">🌐</div>
+        <div>
+          <span>Geomatik Mühendisliği</span>
+          <span class="brand-sub">GMT 458 • Web GIS</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç/Kapa">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">🏠 Anasayfa</a>
+        </li>
+        <li class="nav-item">
+          <a href="resume.html" class="nav-link">📄 Özgeçmiş & Yetkinlikler</a>
+        </li>
+        <li class="nav-item">
+          <a href="courses.html" class="nav-link">📚 Geçmiş ve Aktif Dersler</a>
+        </li>
+        <li class="nav-item">
+          <a href="projects.html" class="nav-link active">🛰️ Projeler & Web GIS</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Sabit Hızlı Sayfa Butonları -->
+    <div class="page-switch-bar">
+      <span style="font-size:0.8rem; color:var(--text-muted); font-weight:600; display:inline-flex; align-items:center; gap:4px;">
+        ⚡ Hızlı Geçiş:
+      </span>
+      <a href="index.html" class="switch-pill">1. Anasayfa</a>
+      <a href="resume.html" class="switch-pill">2. Özgeçmiş & Yetkinlikler</a>
+      <a href="courses.html" class="switch-pill">3. Geçmiş ve Aktif Dersler</a>
+      <a href="projects.html" class="switch-pill current">4. Projeler</a>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       ANA İÇERİK
+       ========================================================================== -->
+  <main class="main-content">
+    
+    <!-- Sayfa Başlığı -->
+    <div class="section-header anim-fade-in">
+      <span class="section-tag">Uygulama ve Portfolyo</span>
+      <h1 class="section-title">Projeler & Web GIS Uygulamaları</h1>
+      <p class="section-subtitle">
+        Web haritacılığı, mekânsal veri tabanları, uydu görüntüsü işleme ve jeodezik hesaplamalar üzerine geliştirdiğim akademik ve kişisel projeler.
+      </p>
+    </div>
+
+    <!-- Proje Kartları Izgarası -->
+    <div class="grid-cards anim-fade-in anim-delay-1">
+      
+      <!-- Proje 1: GMT 458 Web GIS Portfolyosu -->
+      <div class="card card-hover-effect">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <div class="card-icon" style="background:#e0f2fe; color:#0284c7; margin-bottom:0;">🌐</div>
+          <span class="badge badge-primary">GMT 458 Ödev 1</span>
+        </div>
+        <h3 class="card-title">Kişisel Web GIS Portfolyo Sistemi</h3>
+        <p class="card-text">
+          Leaflet ve OpenLayers harita motorlarını barındıran, CSS animasyonları, resimli tablolar ve Issue 1 (zoom threshold) ile Issue 2 (earth wrapX) çözümlerini sunan modern web sayfası.
+        </p>
+        <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+          <span class="badge badge-neutral">Leaflet</span>
+          <span class="badge badge-neutral">OpenLayers</span>
+          <span class="badge badge-neutral">HTML5/CSS3</span>
+          <span class="badge badge-neutral">GitHub Pages</span>
+        </div>
+        <div style="margin-top:1.25rem;">
+          <a href="index.html#akademikHarita" class="btn btn-primary" style="padding:0.45rem 0.9rem; font-size:0.82rem;">
+            🗺️ Haritayı Test Et
+          </a>
+        </div>
+      </div>
+
+      <!-- Proje 2: Hacettepe Beytepe Kampüs Rehberi -->
+      <div class="card card-hover-effect">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <div class="card-icon" style="background:#dcfce7; color:#15803d; margin-bottom:0;">🏛️</div>
+          <span class="badge badge-success">Kampüs GIS</span>
+        </div>
+        <h3 class="card-title">Beytepe Kampüsü İnteraktif Navigasyon</h3>
+        <p class="card-text">
+          Hacettepe Üniversitesi Beytepe yerleşkesindeki fakülteler, kütüphaneler, yemekhaneler ve spor tesislerinin GeoJSON katmanlarıyla sunulduğu rota bulma vePOI arama arayüzü.
+        </p>
+        <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+          <span class="badge badge-neutral">Leaflet</span>
+          <span class="badge badge-neutral">GeoJSON</span>
+          <span class="badge badge-neutral">Turf.js</span>
+          <span class="badge badge-neutral">OpenStreetMap</span>
+        </div>
+        <div style="margin-top:1.25rem;">
+          <a href="index.html#akademikHarita" class="btn btn-secondary" style="padding:0.45rem 0.9rem; font-size:0.82rem;">
+            📍 Konum Bilgisi
+          </a>
+        </div>
+      </div>
+
+      <!-- Proje 3: Ankara Trafik ve Karayolları Ağı CBS -->
+      <div class="card card-hover-effect">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <div class="card-icon" style="background:#fef3c7; color:#b45309; margin-bottom:0;">🛣️</div>
+          <span class="badge badge-accent">Staj Projesi</span>
+        </div>
+        <h3 class="card-title">KGM 4. Bölge Yol Envanteri CBS</h3>
+        <p class="card-text">
+          Karayolları 4. Bölge Müdürlüğü stajı kapsamında devlet yolları ve otoyol akslarının PostGIS ortamında modellenmesi, köprü/menfez sanat yapılarının öznitelik analizi.
+        </p>
+        <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+          <span class="badge badge-neutral">PostGIS</span>
+          <span class="badge badge-neutral">QGIS</span>
+          <span class="badge badge-neutral">Netcad</span>
+          <span class="badge badge-neutral">WMS</span>
+        </div>
+        <div style="margin-top:1.25rem;">
+          <a href="resume.html#stajHaritasi" class="btn btn-secondary" style="padding:0.45rem 0.9rem; font-size:0.82rem;">
+            🔍 Staj Haritasında Gör
+          </a>
+        </div>
+      </div>
+
+      <!-- Proje 4: Sentinel-2 Multispektral Kuraklık İzleme -->
+      <div class="card card-hover-effect">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <div class="card-icon" style="background:#ede9fe; color:#7c3aed; margin-bottom:0;">🛰️</div>
+          <span class="badge badge-primary">Uzaktan Algılama</span>
+        </div>
+        <h3 class="card-title">İç Anadolu Kuraklık ve NDVI Analizi</h3>
+        <p class="card-text">
+          Sentinel-2 L2A bantları kullanılarak hesaplanan NDVI ve NDWI indisleri ile Mogan ve Eymir gölleri çevresindeki mevsimsel su çekilmesi ve vejetasyon değişim modellemesi.
+        </p>
+        <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+          <span class="badge badge-neutral">Sentinel-2</span>
+          <span class="badge badge-neutral">Python (Rasterio)</span>
+          <span class="badge badge-neutral">NDVI</span>
+          <span class="badge badge-neutral">QGIS</span>
+        </div>
+        <div style="margin-top:1.25rem;">
+          <a href="courses.html" class="btn btn-secondary" style="padding:0.45rem 0.9rem; font-size:0.82rem;">
+            📚 İlgili Dersi İncele
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Web GIS Mimarisi ve Teknoloji Özeti -->
+    <section class="table-container anim-fade-in anim-delay-2" style="margin-top:2rem;">
+      <div class="table-header-box">
+        <h3 class="table-title">
+          <span>🛠️</span> Projelerde Kullanılan Web GIS Teknolojileri
+        </h3>
+        <span class="badge badge-primary">Açık Kaynak Yığın (FOSS4G)</span>
+      </div>
+
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Teknoloji Katmanı</th>
+            <th>Kullanılan Kütüphane / Araç</th>
+            <th>Rolü ve İşlevi</th>
+            <th>Ödev ve Proje Bağlantısı</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>İstemci Harita Motoru 1</strong></td>
+            <td>Leaflet v1.9.4</td>
+            <td>Hafif, mobil uyumlu ve hızlı vektör/karo harita oluşturma</td>
+            <td><span class="badge badge-success">Anasayfa (Hacettepe Haritası)</span></td>
+          </tr>
+          <tr>
+            <td><strong>İstemci Harita Motoru 2</strong></td>
+            <td>OpenLayers v8.2</td>
+            <td>Gelişmiş projeksiyon desteği, OGC servisleri ve hassas vektör katmanları</td>
+            <td><span class="badge badge-primary">Özgeçmiş (Stajlar Haritası)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Arayüz & Animasyon</strong></td>
+            <td>HTML5 + CSS3 Keyframes</td>
+            <td>Esnek ızgara, responsive tasarım, radar ve nabız efektleri</td>
+            <td><span class="badge badge-accent">Tüm 4 Sayfa</span></td>
+          </tr>
+          <tr>
+            <td><strong>Yayınlama & Sürüm Kontrolü</strong></td>
+            <td>Git & GitHub Pages</td>
+            <td>Statik web barındırma ve 3+ düzenli commit ile sürüm geçmişi</td>
+            <td><span class="badge badge-neutral">GitHub Repository</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       ALT BİLGİ (FOOTER)
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-text">
+        <strong>Hacettepe Üniversitesi Geomatik Mühendisliği Bölümü</strong><br>
+        GMT 458 – Web GIS • Ödev 1: Kişisel Web Sayfası
+      </div>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Anasayfa</a>
+        <a href="resume.html" class="footer-link">Özgeçmiş & Stajlar</a>
+        <a href="courses.html" class="footer-link">Geçmiş ve Aktif Dersler</a>
+        <a href="projects.html" class="footer-link">Projeler</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Özel JS Dosyası -->
+  <script src="js/main.js"></script>
+</body>
+</html>

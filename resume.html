@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Özgeçmiş & Yetkinlikler | Web GIS Portfolyosu</title>
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- OpenLayers CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css">
+  
+  <!-- Özel CSS Dosyaları -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <style>
+    /* OpenLayers Popup Stilleri */
+    .ol-popup {
+      position: absolute;
+      background-color: white;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      bottom: 12px;
+      left: -50px;
+      min-width: 260px;
+    }
+    .ol-popup:after, .ol-popup:before {
+      top: 100%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+    .ol-popup:after {
+      border-top-color: white;
+      border-width: 10px;
+      left: 48px;
+      margin-left: -10px;
+    }
+    .ol-popup:before {
+      border-top-color: #e2e8f0;
+      border-width: 11px;
+      left: 48px;
+      margin-left: -11px;
+    }
+    .ol-popup-closer {
+      text-decoration: none;
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      color: #94a3b8;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .ol-popup-closer:hover {
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SABİT ÜST MENÜ (STICKY NAVBAR)
+       ========================================================================== -->
+  <header class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon">🌐</div>
+        <div>
+          <span>Geomatik Mühendisliği</span>
+          <span class="brand-sub">GMT 458 • Web GIS</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç/Kapa">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">🏠 Anasayfa</a>
+        </li>
+        <li class="nav-item">
+          <a href="resume.html" class="nav-link active">📄 Özgeçmiş & Yetkinlikler</a>
+        </li>
+        <li class="nav-item">
+          <a href="courses.html" class="nav-link">📚 Geçmiş ve Aktif Dersler</a>
+        </li>
+        <li class="nav-item">
+          <a href="projects.html" class="nav-link">🛰️ Projeler & Web GIS</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Sabit Hızlı Sayfa Butonları -->
+    <div class="page-switch-bar">
+      <span style="font-size:0.8rem; color:var(--text-muted); font-weight:600; display:inline-flex; align-items:center; gap:4px;">
+        ⚡ Hızlı Geçiş:
+      </span>
+      <a href="index.html" class="switch-pill">1. Anasayfa</a>
+      <a href="resume.html" class="switch-pill current">2. Özgeçmiş & Yetkinlikler</a>
+      <a href="courses.html" class="switch-pill">3. Geçmiş ve Aktif Dersler</a>
+      <a href="projects.html" class="switch-pill">4. Projeler</a>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       ANA İÇERİK
+       ========================================================================== -->
+  <main class="main-content">
+    
+    <!-- Sayfa Başlığı -->
+    <div class="section-header anim-fade-in">
+      <span class="section-tag">Kişisel Bilgiler & Deneyim</span>
+      <h1 class="section-title">Özgeçmiş & Staj Deneyimleri</h1>
+      <p class="section-subtitle">
+        Harita mühendisliği alanındaki saha ve ofis stajlarım, çalıştığım kamu ve özel sektör kurumları ile teknik yetkinliklerimin özeti.
+      </p>
+    </div>
+
+    <!-- ==========================================================================
+         HARİTA 2: STAJ DENEYİMLERİ (TÜRKİYE & ANKARA) - OPENLAYERS
+         ========================================================================== -->
+    <section class="map-card anim-fade-in anim-delay-1" id="stajHaritasi">
+      <div class="map-header">
+        <div class="map-title-wrap">
+          <div class="brand-icon" style="background:#1d4ed8;">📍</div>
+          <div>
+            <h2 style="font-size:1.4rem; font-weight:800; color:var(--text-main);">
+              Staj Yaptığım Kurum ve Şirketler Haritası
+            </h2>
+            <p style="font-size:0.85rem; color:var(--text-muted);">
+              Karayolları 4. Bölge Müdürlüğü, Küre Mühendislik ve Doruk Harita Konumları
+            </p>
+          </div>
+        </div>
+        <div class="map-controls-bar">
+          <span class="map-library-badge badge-openlayers">🌍 OpenLayers v8.2</span>
+          <button class="map-action-btn" id="btnFocusAnkaraIntern">
+            🎯 Staj Noktalarına Odaklan (Ankara)
+          </button>
+          <button class="map-action-btn" id="btnFocusTurkey">
+            🇹🇷 Türkiye Genel Bakış
+          </button>
+        </div>
+      </div>
+
+      <!-- OpenLayers Harita Kapsayıcısı -->
+      <div class="map-wrapper">
+        <div id="openlayersMap"></div>
+        
+        <!-- OpenLayers Popup Overlay -->
+        <div id="olPopup" class="ol-popup">
+          <a href="#" id="olPopupCloser" class="ol-popup-closer">✖</a>
+          <div id="olPopupContent"></div>
+        </div>
+
+        <!-- Canlı Zoom ve Issue 1 Durum Bildirimi -->
+        <div class="map-status-overlay">
+          <div class="status-indicator">
+            <span class="status-dot"></span>
+            <span id="olZoomStatus">OpenLayers Zoom Kontrol Ediliyor...</span>
+          </div>
+          <span style="font-size:0.75rem; color:var(--text-muted);">
+            İpucu: Küre Mühendislik ve Doruk Harita birbirine çok yakındır. Türkiye ölçeğinde çakışmaması için Zoom &ge; 11 eşiği tanımlanmıştır.
+          </span>
+        </div>
+      </div>
+
+      <div class="map-info-footer">
+        <div>
+          <strong>Staj Kurumları:</strong> Karayolları 4. Bölge Md., Küre Mühendislik, Doruk Harita
+        </div>
+        <div>
+          <strong>Mekânsal Projeksiyon:</strong> EPSG:3857 (Web Mercator) / EPSG:4326 Kaynak
+        </div>
+      </div>
+
+      <!-- Ödev Yönergesi: OpenLayers Issue 1 & Issue 2 Çözüm Rapor Kutuları -->
+      <div class="assignment-solution-grid">
+        <div class="solution-box issue1">
+          <div class="solution-header">
+            <span class="solution-title">⚡ Issue 1: OpenLayers Zoom Threshold Çözümü</span>
+            <span class="solution-badge" style="color:#b45309; background:#fef3c7;">%10 Puan</span>
+          </div>
+          <p class="solution-desc">
+            Küre Mühendislik (32.8156° D) ile Doruk Harita (32.8174° D) koordinatları birbirine yaklaşık 160 metre mesafededir. Türkiye genel görünümünde (Zoom &lt; 11) çakışmayı önlemek için tek bir özet küme gösterilir; yalnızca <code>minZoom: 11</code> eşiği aşıldığında detay işaretçiler açılır.
+          </p>
+          <code class="solution-code">
+            new ol.layer.Vector({ source: detailSource, minZoom: 11 });
+          </code>
+        </div>
+
+        <div class="solution-box issue2">
+          <div class="solution-header">
+            <span class="solution-title">🌍 Issue 2: OpenLayers wrapX Çözümü</span>
+            <span class="solution-badge" style="color:#1d4ed8; background:#dbeafe;">%10 Puan</span>
+          </div>
+          <p class="solution-desc">
+            OpenLayers kütüphanesinde dünya haritası uzaklaştırıldığında karoların kendini tekrarlamasını engellemek için OSM kaynağında <code>wrapX: false</code> parametresi verilmiş ve <code>view.extent</code> sınırlaması uygulanmıştır.
+          </p>
+          <code class="solution-code">
+            new ol.source.OSM({ wrapX: false }); // Dünyanın tekrarlanmasını önler
+          </code>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         RESİMLİ BİLGİ TABLOSU: STAJ VE İŞ DENEYİMLERİ (TABULAR INFO WITH IMAGES) (%10)
+         ========================================================================== -->
+    <section class="table-container anim-fade-in anim-delay-2">
+      <div class="table-header-box">
+        <h3 class="table-title">
+          <span>💼</span> Staj ve Mesleki Deneyimler Tablosu
+        </h3>
+        <span class="badge badge-primary">3 Kurum / Şirket</span>
+      </div>
+
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Kurum / Şirket</th>
+            <th>Görev & Unvan</th>
+            <th>Tarih Aralığı</th>
+            <th>Kullanılan GIS & Harita Araçları</th>
+            <th>Harita Konumu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="table-entity">
+                <img src="assets/images/karayollari.svg" alt="Karayolları 4. Bölge" class="table-thumb">
+                <div>
+                  <div class="table-entity-title">Karayolları 4. Bölge Müdürlüğü</div>
+                  <div class="table-entity-sub">Kamu Kurumu • Etüt, Proje ve Kamulaştırma</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="badge badge-primary">Geomatik & CBS Stajyeri</span>
+            </td>
+            <td>
+              <strong>Temmuz - Ağustos 2024</strong><br>
+              <span style="font-size:0.75rem; color:var(--text-muted);">30 İş Günü</span>
+            </td>
+            <td>
+              <span class="badge badge-neutral">Netcad</span>
+              <span class="badge badge-neutral">QGIS</span>
+              <span class="badge badge-neutral">GNSS RTK</span>
+            </td>
+            <td>
+              <code>39.9573, 32.8502</code>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="table-entity">
+                <img src="assets/images/kure.svg" alt="Küre Mühendislik" class="table-thumb">
+                <div>
+                  <div class="table-entity-title">Küre Mühendislik</div>
+                  <div class="table-entity-sub">Özel Sektör • İmar ve Altyapı Haritacılığı</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="badge badge-success">Mekânsal Veri Stajyeri</span>
+            </td>
+            <td>
+              <strong>Ağustos - Eylül 2025</strong><br>
+              <span style="font-size:0.75rem; color:var(--text-muted);">30 İş Günü</span>
+            </td>
+            <td>
+              <span class="badge badge-neutral">ArcGIS Pro</span>
+              <span class="badge badge-neutral">AutoCAD</span>
+              <span class="badge badge-neutral">PostGIS</span>
+            </td>
+            <td>
+              <code>39.8845, 32.8156</code>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="table-entity">
+                <img src="assets/images/doruk.svg" alt="Doruk Harita" class="table-thumb">
+                <div>
+                  <div class="table-entity-title">Doruk Harita</div>
+                  <div class="table-entity-sub">Özel Sektör • Mühendislik Ölçmeleri</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <span class="badge badge-accent">Saha & CBS Stajyeri</span>
+            </td>
+            <td>
+              <strong>Haziran - Temmuz 2025</strong><br>
+              <span style="font-size:0.75rem; color:var(--text-muted);">20 İş Günü</span>
+            </td>
+            <td>
+              <span class="badge badge-neutral">Leica Total Station</span>
+              <span class="badge badge-neutral">Leaflet</span>
+              <span class="badge badge-neutral">Python</span>
+            </td>
+            <td>
+              <code>39.8849, 32.8175</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Teknik Yetkinlikler Kartları -->
+    <section>
+      <div class="section-header">
+        <span class="section-tag">Teknik Donanım</span>
+        <h2 class="section-title">Yazılım ve Mesleki Yetkinlikler</h2>
+        <p class="section-subtitle">
+          Akademik eğitimim ve stajlarım boyunca deneyim kazandığım CBS ve yazılım teknolojileri.
+        </p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="card card-hover-effect">
+          <div class="card-icon">💻</div>
+          <h3 class="card-title">Web Haritalama & Frontend</h3>
+          <p class="card-text">
+            <strong>Leaflet, OpenLayers, Mapbox GL JS, HTML5, CSS3 (Animasyonlar), JavaScript (ES6+).</strong> Coğrafi katmanların stilize edilmesi ve harita arayüzü geliştirme.
+          </p>
+        </div>
+
+        <div class="card card-hover-effect">
+          <div class="card-icon">🗺️</div>
+          <h3 class="card-title">Masaüstü CBS & CAD</h3>
+          <p class="card-text">
+            <strong>QGIS, ArcGIS Pro, Netcad, AutoCAD Civil 3D.</strong> Vektör/raster veri analizi, kartografik harita tasarımı ve arazi modelleme.
+          </p>
+        </div>
+
+        <div class="card card-hover-effect">
+          <div class="card-icon">🗄️</div>
+          <h3 class="card-title">Mekânsal Veritabanı & Backend</h3>
+          <p class="card-text">
+            <strong>PostgreSQL, PostGIS, Python (GeoPandas, Shapely), GeoJSON, WMS/WFS/WMTS.</strong> Mekânsal sorgulama ve veri dönüşümleri.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       ALT BİLGİ (FOOTER)
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-text">
+        <strong>Hacettepe Üniversitesi Geomatik Mühendisliği Bölümü</strong><br>
+        GMT 458 – Web GIS • Ödev 1: Kişisel Web Sayfası
+      </div>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Anasayfa</a>
+        <a href="resume.html" class="footer-link">Özgeçmiş & Stajlar</a>
+        <a href="courses.html" class="footer-link">Geçmiş ve Aktif Dersler</a>
+        <a href="projects.html" class="footer-link">Projeler</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- OpenLayers JS -->
+  <script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
+  
+  <!-- Özel JS Dosyaları -->
+  <script src="js/openlayers-map.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
