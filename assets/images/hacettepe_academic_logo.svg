@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <!-- Hacettepe Red Gradient -->
+    <linearGradient id="hacettepeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b91c1c"/>
+      <stop offset="50%" stop-color="#991b1b"/>
+      <stop offset="100%" stop-color="#6b1111"/>
+    </linearGradient>
+    <!-- Academic Gold Accent -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#eab308"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Rounded Crest -->
+  <rect x="4" y="4" width="112" height="112" rx="20" fill="url(#hacettepeGrad)" stroke="#ffffff" stroke-width="2.5" />
+  
+  <!-- Outer Gold Ring / Geomatics Globe Latitude-Longitude Lines -->
+  <circle cx="60" cy="54" r="42" fill="none" stroke="url(#goldGrad)" stroke-width="1.2" opacity="0.6" stroke-dasharray="3,2"/>
+  <ellipse cx="60" cy="54" rx="42" ry="18" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.35"/>
+  <line x1="60" y1="12" x2="60" y2="96" stroke="#ffffff" stroke-width="0.8" opacity="0.35"/>
+  <line x1="18" y1="54" x2="102" y2="54" stroke="#ffffff" stroke-width="0.8" opacity="0.35"/>
+
+  <!-- Academic Mortarboard / Graduation Cap at Top of Crest -->
+  <path d="M60 20 L84 30 L60 40 L36 30 Z" fill="url(#goldGrad)"/>
+  <path d="M46 35 L46 44 C46 48 74 48 74 44 L74 35" fill="none" stroke="url(#goldGrad)" stroke-width="1.8"/>
+  <line x1="80" y1="32" x2="84" y2="46" stroke="url(#goldGrad)" stroke-width="1.5"/>
+  <circle cx="84" cy="47" r="1.5" fill="#facc15"/>
+
+  <!-- Stylized Hacettepe Stag / Geyik Silhouette in Center -->
+  <g fill="#ffffff" opacity="0.95" transform="translate(42, 38) scale(0.72)">
+    <!-- Antlers (Boynuzlar) -->
+    <path d="M22 6 C20 2, 14 0, 10 3 C13 5, 16 8, 18 12 M28 6 C30 2, 36 0, 40 3 C37 5, 34 8, 32 12 M20 9 C16 9, 13 12, 12 15 M30 9 C34 9, 37 12, 38 15" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+    <!-- Head & Ears -->
+    <path d="M25 12 C21 15, 20 22, 25 26 C30 22, 29 15, 25 12 Z"/>
+    <!-- Elegant Neck & Torso -->
+    <path d="M24 25 C21 30, 18 36, 17 44 C21 44, 29 44, 33 44 C32 36, 29 30, 26 25 Z"/>
+    <!-- Leaping Forelegs -->
+    <path d="M18 43 L12 55 M32 43 L38 55" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Surveying & Geomatics Crosshair Target / Compass Star at Bottom -->
+  <circle cx="60" cy="54" r="6" fill="none" stroke="url(#goldGrad)" stroke-width="1.2"/>
+  <circle cx="60" cy="54" r="2" fill="url(#goldGrad)"/>
+
+  <!-- Academic Banner Ribbon at Bottom -->
+  <path d="M18 96 L102 96 L96 108 L24 108 Z" fill="#1e293b" stroke="url(#goldGrad)" stroke-width="1"/>
+  <text x="60" y="105" font-family="'Open Sans', Arial, sans-serif" font-size="7.5" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="0.08em">HACETTEPE • GEOMATICS</text>
+</svg>
