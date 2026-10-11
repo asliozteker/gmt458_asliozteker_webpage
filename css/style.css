@@ -1,14 +1,14 @@
 /* ==========================================================================
-   GMT 458 - WEB GIS: SADE AKADEMİK PORTFOLYO TASARIMI
-   Referans: Hacettepe Üniversitesi Akademik Web Sayfası Konsepti
-   Sade, dikkat dağıtmayan, temiz ve işlevsel tipografi
+   GMT 458 - WEB GIS: MINIMALIST ACADEMIC PORTFOLIO STYLESHEET
+   Reference: Hacettepe University Faculty Personal Web Page Style
+   Clean, distraction-free, functional academic typography
    ========================================================================== */
 
 :root {
   --font-base: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
-  /* Sade Akademik Renkler */
+  /* Academic Color Palette */
   --text-primary: #222222;
   --text-secondary: #555555;
   --text-muted: #777777;
@@ -17,7 +17,7 @@
   --bg-container: #ffffff;
   --bg-subtle: #f5f5f5;
   
-  --primary-color: #205493;    /* Klasik Hacettepe / Akademik Koyu Mavi */
+  --primary-color: #205493;    /* Academic Deep Blue */
   --primary-hover: #112e51;
   --border-light: #e5e5e5;
   --border-dark: #cccccc;
@@ -26,7 +26,7 @@
   --nav-height: 56px;
 }
 
-/* Sıfırlama */
+/* Base Reset */
 * {
   margin: 0;
   padding: 0;
@@ -60,7 +60,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   SABİT ÜST MENÜ (STICKY NAVBAR) - SADE & ZARİF
+   STICKY NAVBAR - CLEAN & UNDERSTATED
    ========================================================================== */
 .site-header {
   position: sticky;
@@ -148,7 +148,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   ANA İÇERİK KAPSAYICISI (AKADEMİK DÜZEN)
+   ACADEMIC CONTENT WRAPPER
    ========================================================================== */
 .site-wrapper {
   max-width: var(--max-width);
@@ -167,7 +167,7 @@ a:hover {
   margin-bottom: 2rem;
 }
 
-/* Başlıklar */
+/* Headings */
 h1.page-title {
   font-size: 1.65rem;
   font-weight: 700;
@@ -196,7 +196,7 @@ h2.section-heading {
 }
 
 /* ==========================================================================
-   HOME SAYFASI: PROFİL & METİN ALANI (USER PLACEHOLDER)
+   HOME PAGE: PROFILE & BIO PLACEHOLDER
    ========================================================================== */
 .profile-intro-layout {
   display: grid;
@@ -255,7 +255,7 @@ h2.section-heading {
 }
 
 /* ==========================================================================
-   HARİTA BÖLÜMÜ (SADE & ÇERÇEVELİ)
+   MAP CONTAINER & TOOLBAR
    ========================================================================== */
 .map-frame {
   margin-top: 1.25rem;
@@ -317,7 +317,7 @@ h2.section-heading {
 }
 
 /* ==========================================================================
-   RESİMLİ BİLGİ TABLOLARI (SADE & TEMİZ AKADEMİK TASARIM)
+   ACADEMIC TABLES (TABULAR INFORMATION WITH IMAGES)
    ========================================================================== */
 .academic-table {
   width: 100%;
@@ -374,7 +374,7 @@ h2.section-heading {
 }
 
 /* ==========================================================================
-   TEKNİK NOTLAR (ISSUE 1 & 2 - GÖSTERİŞSİZ, AKADEMİK AÇIKLAMA)
+   TECHNICAL NOTES (ISSUE 1 & 2 EXPLANATION BOX)
    ========================================================================== */
 .technical-notes {
   background-color: #fafafa;
@@ -400,7 +400,7 @@ h2.section-heading {
 }
 
 /* ==========================================================================
-   LİSTELER VE BASİT KARTLAR
+   SIMPLE LISTS
    ========================================================================== */
 .simple-list {
   list-style: none;
@@ -424,7 +424,7 @@ h2.section-heading {
 }
 
 /* ==========================================================================
-   ALT BİLGİ (FOOTER)
+   FOOTER
    ========================================================================== */
 .site-footer {
   border-top: 1px solid var(--border-light);
@@ -445,7 +445,7 @@ h2.section-heading {
 }
 
 /* ==========================================================================
-   MOBİL UYUMLULUK
+   RESPONSIVE DESIGN
    ========================================================================== */
 @media (max-width: 768px) {
   .profile-intro-layout {

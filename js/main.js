@@ -1,9 +1,10 @@
 /**
- * Web GIS Portfolyo - Sade Gezinme ve Etkileşim Scripti
+ * Web GIS Portfolio - Minimalist Academic UI Interactions
+ * Mobile navigation menu toggle and active link highlighting
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobil menü açma / kapatma
+  // Mobile menu toggle
   const menuToggle = document.getElementById('menuToggle');
   const navMenu = document.getElementById('navMenu');
 
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Aktif sayfa bağlantısını işaretleme
+  // Active navigation link tracking
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   const navLinks = document.querySelectorAll('.nav-item a');
 

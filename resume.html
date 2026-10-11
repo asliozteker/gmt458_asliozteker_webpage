@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Özgeçmiş & Yetkinlikler | Geomatik Mühendisliği & Web GIS</title>
+  <title>Resume & Skills | Aslı Özteker - Web GIS Portfolio</title>
   
-  <!-- Font -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -13,22 +13,22 @@
   <!-- OpenLayers CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css">
   
-  <!-- CSS Dosyaları -->
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
 
   <style>
-    /* Sade OpenLayers Popup */
+    /* OpenLayers Popup Styling */
     .ol-popup {
       position: absolute;
       background-color: white;
-      padding: 10px 14px;
+      padding: 12px 16px;
       border-radius: 4px;
       border: 1px solid #ccc;
       bottom: 12px;
       left: -50px;
-      min-width: 220px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      min-width: 240px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
     .ol-popup-closer {
       text-decoration: none;
@@ -46,40 +46,40 @@
 </head>
 <body>
 
-  <!-- SABİT ÜST MENÜ (STICKY NAVBAR) -->
+  <!-- STICKY TOP NAVBAR -->
   <header class="site-header">
     <div class="nav-container">
       <div class="site-title">
-        <a href="index.html">Geomatik Mühendisliği</a>
+        <a href="index.html">Aslı Özteker</a>
         <span class="site-subtitle">| GMT 458 Web GIS</span>
       </div>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Menü">☰</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">☰</button>
 
       <ul class="nav-menu" id="navMenu">
-        <li class="nav-item"><a href="index.html">Anasayfa</a></li>
-        <li class="nav-item"><a href="resume.html" class="active">Özgeçmiş & Yetkinlikler</a></li>
-        <li class="nav-item"><a href="courses.html">Geçmiş ve Aktif Dersler</a></li>
-        <li class="nav-item"><a href="projects.html">Projeler</a></li>
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="resume.html" class="active">Resume & Skills</a></li>
+        <li class="nav-item"><a href="courses.html">Past & Active Courses</a></li>
+        <li class="nav-item"><a href="projects.html">Projects</a></li>
       </ul>
     </div>
   </header>
 
-  <!-- ANA İÇERİK KAPSAYICISI -->
+  <!-- MAIN CONTENT WRAPPER -->
   <main class="site-wrapper fade-in">
     <div class="content-card">
-      <h1 class="page-title">Özgeçmiş ve Mesleki Deneyimler</h1>
+      <h1 class="page-title">Resume & Professional Experience</h1>
       <p class="section-lead">
-        Geomatik mühendisliği alanındaki mesleki stajlarım, çalıştığım kurumlar ve teknik yetkinliklerim.
+        Summary of field and office internships, organizations worked with, and technical competencies in Geomatics Engineering.
       </p>
 
-      <!-- STAJ HARİTASI (OPENLAYERS) -->
+      <!-- INTERNSHIP MAP (OPENLAYERS) -->
       <h2 class="section-heading">
-        <span>Staj Yapılan Kurum ve Şirketler (Türkiye & Ankara)</span>
-        <span style="font-size: 0.8rem; font-weight: normal; color: #666;">OpenLayers Haritası</span>
+        <span>Internship Organizations & Companies (Turkey & Ankara)</span>
+        <span style="font-size: 0.8rem; font-weight: normal; color: #666;">OpenLayers Map</span>
       </h2>
       <p class="section-lead">
-        Staj deneyimi edindiğim kurumların ve şirketlerin harita üzerindeki konumları.
+        Geographic locations of public institutions and private engineering firms where internships were completed.
       </p>
 
       <div class="map-frame">
@@ -89,9 +89,9 @@
             <span>OpenLayers v8.2</span>
           </div>
           <div class="map-buttons">
-            <button class="map-btn" id="btnToggleOlLayer">🗺️ Uydu Görüntüsüne Geç</button>
-            <button class="map-btn" id="btnFocusAnkaraIntern">Staj Noktalarına Odaklan (Ankara)</button>
-            <button class="map-btn" id="btnFocusTurkey">Türkiye Görünümü</button>
+            <button class="map-btn" id="btnToggleOlLayer">🗺️ Switch to Satellite</button>
+            <button class="map-btn" id="btnFocusAnkaraIntern">Focus on Internships (Ankara)</button>
+            <button class="map-btn" id="btnFocusTurkey">Turkey Overview</button>
           </div>
         </div>
 
@@ -107,43 +107,43 @@
       </div>
 
       <p class="map-caption">
-        <strong>İşaretli Kurumlar:</strong> Karayolları 4. Bölge Müdürlüğü, Küre Mühendislik, Doruk Harita.
+        <strong>Marked Organizations:</strong> General Directorate of Highways (4th Regional Directorate), Küre Engineering, Doruk Surveying.
       </p>
 
-      <!-- Sade Teknik Açıklama Notu (Issue 1 & Issue 2) -->
+      <!-- Technical Assignment Notes (Issue 1 & Issue 2) -->
       <div class="technical-notes">
-        <strong>Teknik Harita Özellikleri (GMT 458):</strong><br>
-        • <strong>Issue 1 (Zoom Threshold):</strong> Küre Mühendislik ve Doruk Harita birbirine çok yakın mesafededir (~160 m). Türkiye genel görünümünde çakışmayı önlemek için tek bir özet gösterilir; bireysel staj işaretçileri yalnızca yakınlaşıldığında (Zoom ≥ 11) görünür.<br>
-        • <strong>Issue 2 (Earth Repeating):</strong> Harita uzaklaştırıldığında dünya karolarının yatayda tekrarlanması <code>wrapX: false</code> parametresi ve görünüm sınırlaması ile engellenmiştir.
+        <strong>Technical Map Implementation (GMT 458):</strong><br>
+        • <strong>Issue 1 (Zoom Threshold):</strong> Küre Engineering and Doruk Surveying are located in close proximity (~160 m). To eliminate visual overlap at country scale, a single cluster marker is displayed; individual markers are revealed only when zooming in (Zoom ≥ 11).<br>
+        • <strong>Issue 2 (Earth Repeating):</strong> Repetition of base map tiles horizontally when zoomed out is prevented using the <code>wrapX: false</code> parameter and view extent boundary.
       </div>
 
-      <!-- RESİMLİ BİLGİ TABLOSU: STAJ DENEYİMLERİ -->
+      <!-- TABULAR INFORMATION WITH IMAGES: INTERNSHIPS -->
       <h2 class="section-heading" style="margin-top: 2.5rem;">
-        <span>Staj ve Çalışma Deneyimleri</span>
+        <span>Internship & Professional Experiences</span>
       </h2>
 
       <table class="academic-table">
         <thead>
           <tr>
-            <th>Kurum / Kuruluş</th>
-            <th>Görev / Alan</th>
-            <th>Tarih</th>
-            <th>Kullanılan Araçlar</th>
+            <th>Organization / Firm</th>
+            <th>Role & Field</th>
+            <th>Duration</th>
+            <th>Tools & Technologies Used</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>
               <div class="table-logo-cell">
-                <img src="assets/images/karayollari.svg" alt="Karayolları 4. Bölge" class="table-logo-img">
+                <img src="assets/images/karayollari.svg" alt="Highway Directorate 4th Regional" class="table-logo-img">
                 <div>
-                  <strong>Karayolları 4. Bölge Müdürlüğü</strong><br>
-                  <small style="color: #666;">Kamu Kurumu • Etüt, Proje ve Kamulaştırma</small>
+                  <strong>General Directorate of Highways (4th Regional Directorate)</strong><br>
+                  <small style="color: #666;">Public Authority • Surveying, Highway GIS & Expropriation</small>
                 </div>
               </div>
             </td>
-            <td>Geomatik & CBS Stajyeri</td>
-            <td>Temmuz - Ağustos 2024</td>
+            <td>Geomatics & GIS Intern</td>
+            <td>July - August 2024</td>
             <td>
               <span class="badge-tag">Netcad</span>
               <span class="badge-tag">QGIS</span>
@@ -154,15 +154,15 @@
           <tr>
             <td>
               <div class="table-logo-cell">
-                <img src="assets/images/kure.svg" alt="Küre Mühendislik" class="table-logo-img">
+                <img src="assets/images/kure.svg" alt="Küre Engineering" class="table-logo-img">
                 <div>
-                  <strong>Küre Mühendislik</strong><br>
-                  <small style="color: #666;">Özel Sektör • İmar ve Altyapı Haritacılığı</small>
+                  <strong>Küre Engineering</strong><br>
+                  <small style="color: #666;">Private Firm • Zoning Plans & Infrastructure Mapping</small>
                 </div>
               </div>
             </td>
-            <td>Mekânsal Veri Stajyeri</td>
-            <td>Ağustos - Eylül 2025</td>
+            <td>Spatial Data Intern</td>
+            <td>August - September 2025</td>
             <td>
               <span class="badge-tag">ArcGIS Pro</span>
               <span class="badge-tag">AutoCAD</span>
@@ -173,15 +173,15 @@
           <tr>
             <td>
               <div class="table-logo-cell">
-                <img src="assets/images/doruk.svg" alt="Doruk Harita" class="table-logo-img">
+                <img src="assets/images/doruk.svg" alt="Doruk Surveying" class="table-logo-img">
                 <div>
-                  <strong>Doruk Harita</strong><br>
-                  <small style="color: #666;">Özel Sektör • Mühendislik Ölçmeleri</small>
+                  <strong>Doruk Surveying & Engineering</strong><br>
+                  <small style="color: #666;">Private Firm • Engineering Surveys & Staking</small>
                 </div>
               </div>
             </td>
-            <td>Saha & Ölçme Stajyeri</td>
-            <td>Haziran - Temmuz 2025</td>
+            <td>Field & Geomatics Intern</td>
+            <td>June - July 2025</td>
             <td>
               <span class="badge-tag">Total Station</span>
               <span class="badge-tag">Leaflet</span>
@@ -191,23 +191,23 @@
         </tbody>
       </table>
 
-      <!-- YETKİNLİKLER LİSTESİ -->
+      <!-- TECHNICAL SKILLS LIST -->
       <h2 class="section-heading" style="margin-top: 2rem;">
-        <span>Teknik Yetkinlikler</span>
+        <span>Technical Skills & Competencies</span>
       </h2>
       <ul class="simple-list">
-        <li><strong>Web Haritalama:</strong> Leaflet, OpenLayers, HTML5, CSS3, JavaScript (ES6+), GeoJSON, OGC Web Servisleri (WMS/WFS).</li>
-        <li><strong>CBS & CAD Yazılımları:</strong> QGIS, ArcGIS Pro, Netcad, AutoCAD Civil 3D.</li>
-        <li><strong>Veritabanı & Analiz:</strong> PostgreSQL, PostGIS, Python (GeoPandas, Shapely), Mekânsal SQL.</li>
-        <li><strong>Jeodezi & Fotogrametri:</strong> GNSS RTK ölçmeleri, nivelman, Agisoft Metashape ile İHA verisi işleme.</li>
+        <li><strong>Web Mapping & Frontend:</strong> Leaflet, OpenLayers, HTML5, CSS3, JavaScript (ES6+), GeoJSON, OGC Web Services (WMS/WFS/WMTS).</li>
+        <li><strong>Desktop GIS & CAD:</strong> QGIS, ArcGIS Pro, Netcad, AutoCAD Civil 3D.</li>
+        <li><strong>Spatial Databases & Analytics:</strong> PostgreSQL, PostGIS, Python (GeoPandas, Shapely), Spatial SQL queries.</li>
+        <li><strong>Geodesy & Photogrammetry:</strong> GNSS RTK positioning, leveling, Agisoft Metashape UAV image processing, Digital Elevation Models (DEM).</li>
       </ul>
     </div>
   </main>
 
-  <!-- ALT BİLGİ (FOOTER) -->
+  <!-- SITE FOOTER -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <span>Hacettepe Üniversitesi Geomatik Mühendisliği • GMT 458 Web GIS</span>
+      <span>Hacettepe University Department of Geomatics Engineering • GMT 458 Web GIS</span>
       <span>Ankara, 2026</span>
     </div>
   </footer>
@@ -215,7 +215,7 @@
   <!-- OpenLayers JS -->
   <script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
   
-  <!-- JS Dosyaları -->
+  <!-- JavaScript Files -->
   <script src="js/openlayers-map.js"></script>
   <script src="js/main.js"></script>
 </body>

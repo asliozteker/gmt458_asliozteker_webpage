@@ -1,104 +1,104 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projeler | Geomatik Mühendisliği & Web GIS</title>
+  <title>Projects | Aslı Özteker - Web GIS Portfolio</title>
   
-  <!-- Font -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   
-  <!-- CSS Dosyaları -->
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
 
-  <!-- SABİT ÜST MENÜ (STICKY NAVBAR) -->
+  <!-- STICKY TOP NAVBAR -->
   <header class="site-header">
     <div class="nav-container">
       <div class="site-title">
-        <a href="index.html">Geomatik Mühendisliği</a>
+        <a href="index.html">Aslı Özteker</a>
         <span class="site-subtitle">| GMT 458 Web GIS</span>
       </div>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Menü">☰</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">☰</button>
 
       <ul class="nav-menu" id="navMenu">
-        <li class="nav-item"><a href="index.html">Anasayfa</a></li>
-        <li class="nav-item"><a href="resume.html">Özgeçmiş & Yetkinlikler</a></li>
-        <li class="nav-item"><a href="courses.html">Geçmiş ve Aktif Dersler</a></li>
-        <li class="nav-item"><a href="projects.html" class="active">Projeler</a></li>
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="resume.html">Resume & Skills</a></li>
+        <li class="nav-item"><a href="courses.html">Past & Active Courses</a></li>
+        <li class="nav-item"><a href="projects.html" class="active">Projects</a></li>
       </ul>
     </div>
   </header>
 
-  <!-- ANA İÇERİK KAPSAYICISI -->
+  <!-- MAIN CONTENT WRAPPER -->
   <main class="site-wrapper fade-in">
     <div class="content-card">
-      <h1 class="page-title">Projeler ve Web GIS Çalışmaları</h1>
+      <h1 class="page-title">Projects & Web GIS Applications</h1>
       <p class="section-lead">
-        Mekânsal veri analitiği, web tabanlı harita servisleri ve CBS alanında geliştirdiğim akademik ve kişisel projeler.
+        Academic and individual projects focused on spatial data analytics, web mapping engines, and GIS database design.
       </p>
 
-      <!-- PROJELER LİSTESİ -->
+      <!-- SELECTED PROJECTS TABLE -->
       <h2 class="section-heading">
-        <span>Seçilmiş Çalışmalar</span>
+        <span>Selected Projects</span>
       </h2>
 
       <table class="academic-table">
         <thead>
           <tr>
-            <th>Proje Adı</th>
-            <th>Açıklama</th>
-            <th>Kullanılan Teknolojiler</th>
-            <th>Bağlantı</th>
+            <th>Project Title</th>
+            <th>Description</th>
+            <th>Technologies Used</th>
+            <th>Link</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>GMT 458 Kişisel Web GIS Portfolyosu</strong></td>
-            <td>Leaflet ve OpenLayers haritalarını barındıran, Issue 1 ve Issue 2 çözümlerini uygulayan kişisel web sitesi.</td>
-            <td>Leaflet, OpenLayers, HTML5, CSS3</td>
-            <td><a href="index.html">Haritayı Gör</a></td>
+            <td><strong>GMT 458 Personal Web GIS Portfolio</strong></td>
+            <td>Clean, responsive portfolio site embedding Leaflet and OpenLayers interactive maps, implementing Issue 1 and Issue 2 solutions.</td>
+            <td>Leaflet, OpenLayers, HTML5, CSS3, JavaScript</td>
+            <td><a href="index.html">View Map</a></td>
           </tr>
 
           <tr>
-            <td><strong>KGM 4. Bölge Yol Envanteri CBS</strong></td>
-            <td>Devlet yolları ve otoyol akslarının PostGIS üzerinde modellenmesi, köprü ve sanat yapılarının öznitelik analizi.</td>
+            <td><strong>Highway Network GIS Inventory</strong></td>
+            <td>Spatial modeling of national highway corridors in PostGIS, attribute asset management for bridges and culverts.</td>
             <td>PostGIS, QGIS, Netcad</td>
-            <td><a href="resume.html">Staj Sayfası</a></td>
+            <td><a href="resume.html">Resume Page</a></td>
           </tr>
 
           <tr>
-            <td><strong>Beytepe Kampüsü Navigasyon Arayüzü</strong></td>
-            <td>Hacettepe Üniversitesi Beytepe yerleşkesi bina ve yol ağlarının GeoJSON formatında görselleştirilmesi.</td>
+            <td><strong>Beytepe Campus Navigation Interface</strong></td>
+            <td>Interactive campus map visualizing university buildings, faculty paths, and points of interest using GeoJSON layers.</td>
             <td>Leaflet, GeoJSON, OSM</td>
-            <td><a href="index.html">Kampüs Haritası</a></td>
+            <td><a href="index.html">Campus Map</a></td>
           </tr>
 
           <tr>
-            <td><strong>Sentinel-2 Kuraklık ve Vejetasyon Analizi</strong></td>
-            <td>İç Anadolu gölleri çevresindeki mevsimsel su çekilmesinin NDVI indisleri ile izlenmesi.</td>
+            <td><strong>Sentinel-2 Drought & Vegetation Index</strong></td>
+            <td>Seasonal surface water recession and NDVI vegetation analysis around Central Anatolian lakes using Sentinel-2 L2A bands.</td>
             <td>Python, Sentinel-2, SNAP</td>
-            <td><a href="courses.html">İlgili Ders</a></td>
+            <td><a href="courses.html">Course Page</a></td>
           </tr>
         </tbody>
       </table>
     </div>
   </main>
 
-  <!-- ALT BİLGİ (FOOTER) -->
+  <!-- SITE FOOTER -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <span>Hacettepe Üniversitesi Geomatik Mühendisliği • GMT 458 Web GIS</span>
+      <span>Hacettepe University Department of Geomatics Engineering • GMT 458 Web GIS</span>
       <span>Ankara, 2026</span>
     </div>
   </footer>
 
-  <!-- JS Dosyası -->
+  <!-- JavaScript File -->
   <script src="js/main.js"></script>
 </body>
 </html>

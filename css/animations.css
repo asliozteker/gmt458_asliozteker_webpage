@@ -1,9 +1,9 @@
 /* ==========================================================================
-   GMT 458 - WEB GIS: CSS ANİMASYONLARI (%10 PUAN KRİTERİ)
-   Sade, dikkat dağıtmayan, akıcı ve profesyonel geçişler
+   GMT 458 - WEB GIS: CSS ANIMATIONS (%10 RUBRIC CRITERIA)
+   Subtle, distraction-free, smooth academic transitions
    ========================================================================== */
 
-/* 1. Sayfa Açılışında Yumuşak Belirme (Fade In) */
+/* 1. Gentle Fade In on Page Load */
 @keyframes fadeInSimple {
   from {
     opacity: 0;
@@ -19,7 +19,7 @@
   animation: fadeInSimple 0.4s ease-out forwards;
 }
 
-/* 2. Harita Konum Göstergesi (Hafif Nabız / Pulse) */
+/* 2. Map Status Indicator (Soft Pulse) */
 @keyframes softPulse {
   0% {
     transform: scale(0.96);
@@ -45,7 +45,7 @@
   margin-right: 4px;
 }
 
-/* 3. Menü ve Buton Geçişleri */
+/* 3. Smooth Menu and Button Transitions */
 .nav-item a, .map-btn, a {
   transition: all 0.2s ease-in-out;
 }

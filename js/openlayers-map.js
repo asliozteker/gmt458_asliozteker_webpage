@@ -1,11 +1,11 @@
 /**
- * OpenLayers Haritası - Staj Deneyimleri (Özgeçmiş Sayfası)
- * Türkiye ve Ankara Odaklı İnteraktif Harita
+ * OpenLayers Map - Internship Experiences (Resume Page)
+ * Turkey and Ankara Focused Interactive Map
  * 
- * 403 Access Blocked hatasını önlemek için güvenilir CartoDB Voyager ve Esri altlıkları kullanılmıştır.
- * GMT 458 Yönerge Kazanımları:
- * - Issue 1 Çözümü: Zoom eşiği (Zoom Threshold) - Uzak ölçekte çakışmayı önleme
- * - Issue 2 Çözümü: Harita uzaklaştırıldığında dünyanın kendini tekrarlamasını engelleme (wrapX: false)
+ * Uses reliable CartoDB Voyager and Esri basemaps to prevent 403 Access Blocked errors.
+ * GMT 458 Assignment Objectives:
+ * - Issue 1 Solution: Zoom threshold (minZoom: 11) to prevent marker overlap at smaller scales
+ * - Issue 2 Solution: Prevent earth repeating when zoomed out (wrapX: false & view extent)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,58 +15,56 @@ document.addEventListener('DOMContentLoaded', () => {
   const TURKEY_CENTER = ol.proj.fromLonLat([35.2433, 38.9637]);
   const ANKARA_CENTER = ol.proj.fromLonLat([32.8350, 39.9200]);
 
-  // Staj Konumları - Enlem (Lat) ve Boylam (Lon)
+  // Internship Locations - Latitude (Lat) & Longitude (Lon)
   const internships = [
     {
       id: "karayollari",
-      name: "Karayolları 4. Bölge Müdürlüğü",
-      role: "Geomatik & CBS Stajı",
-      desc: "Yol ağı coğrafi bilgi sistemleri, kamulaştırma ve güzergah etüt ölçümleri.",
+      name: "General Directorate of Highways (4th Regional Directorate)",
+      role: "Geomatics & GIS Intern",
+      desc: "Highway network GIS database, expropriation plans, alignment surveys.",
       coords: ol.proj.fromLonLat([32.85022518021346, 39.9572848124613]),
       lat: 39.957285,
       lon: 32.850225,
-      date: "Temmuz - Ağustos 2024",
+      date: "July - August 2024",
       color: "#0284c7",
       textOffset: [0, -32]
     },
     {
       id: "kure",
-      name: "Küre Mühendislik",
-      role: "Mekânsal Veri Stajı",
-      desc: "İmar uygulamaları, halihazır harita üretimi ve Sayısal Arazi Modeli (DEM).",
+      name: "Küre Engineering",
+      role: "Spatial Data Intern",
+      desc: "Zoning applications, base mapping, Digital Elevation Model (DEM) creation.",
       coords: ol.proj.fromLonLat([32.81563373589881, 39.88448294796374]),
       lat: 39.884483,
       lon: 32.815634,
-      date: "Ağustos - Eylül 2025",
+      date: "August - September 2025",
       color: "#16a34a",
-      textOffset: [-65, -30] // Doruk Harita ile metin çakışmasını önlemek için sol üst ofset
+      textOffset: [-75, -30] // Offset to prevent text overlap with Doruk Surveying
     },
     {
       id: "doruk",
-      name: "Doruk Harita",
-      role: "Mühendislik Ölçmeleri Stajı",
-      desc: "Total Station ve GNSS RTK ile altyapı aplikasyonu ve deformasyon ölçümleri.",
+      name: "Doruk Surveying & Engineering",
+      role: "Field & Engineering Survey Intern",
+      desc: "Total Station and GNSS RTK infrastructure staking, deformation monitoring.",
       coords: ol.proj.fromLonLat([32.817468947570866, 39.88491243424993]),
       lat: 39.884912,
       lon: 32.817469,
-      date: "Haziran - Temmuz 2025",
+      date: "June - July 2025",
       color: "#9333ea",
-      textOffset: [65, -30] // Küre Mühendislik ile metin çakışmasını önlemek için sağ üst ofset
+      textOffset: [75, -30] // Offset to prevent text overlap with Küre Engineering
     }
   ];
 
   // ==========================================================================
-  // ALTLIK HARİTA KATMANLARI (403 ENGELİNİ AŞAN GÜVENİLİR VE SERBEST SERVİSLER)
-  // 1) CartoDB Voyager: Detaylı sokak ve yerleşim haritası (OSM verisi, engelsiz)
-  // 2) Esri World Imagery: Yüksek çözünürlüklü uydu görüntüsü
+  // BASEMAP LAYERS (NON-BLOCKING CARTO AND ESRI SERVICES)
   // ==========================================================================
   const maxExtent = ol.proj.get('EPSG:3857').getExtent();
 
-  // CartoDB Voyager Altlığı (403 Hatası Vermeyen Kesintisiz OSM Altlığı)
+  // CartoDB Voyager Basemap (OpenStreetMap data, CORS-friendly, no 403 blocks)
   const cartoVoyagerSource = new ol.source.XYZ({
     url: 'https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
-    attributions: '&copy; OpenStreetMap &copy; CARTO',
-    wrapX: false, // ISSUE 2: Dünyanın yatayda kendini tekrarlamasını engeller!
+    attributions: '&copy; OpenStreetMap contributors &copy; CARTO',
+    wrapX: false, // ISSUE 2: Prevents horizontal repetition of world tiles
     maxZoom: 19
   });
 
@@ -75,11 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
     visible: true
   });
 
-  // Esri Uydu Görüntüsü Altlığı
+  // Esri World Imagery (Satellite)
   const esriSatelliteSource = new ol.source.XYZ({
     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     attributions: 'Tiles &copy; Esri',
-    wrapX: false, // ISSUE 2: Dünyanın yatay tekrarını engeller!
+    wrapX: false, // ISSUE 2: Prevents horizontal repetition
     maxZoom: 19
   });
 
@@ -89,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================================================
-  // İŞARETÇİLER VE ISSUE 1: ZOOM THRESHOLD
+  // MARKERS AND ISSUE 1: ZOOM THRESHOLD
   // ==========================================================================
   const detailFeatures = internships.map(item => {
     return new ol.Feature({
@@ -102,10 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
     features: detailFeatures
   });
 
-  // Profesyonel Pin İşaretçi Stili
+  // Professional Marker Style
   const createMarkerStyle = (item) => {
     return [
-      // Dış Halka & Gölge
       new ol.style.Style({
         image: new ol.style.Circle({
           radius: 10,
@@ -113,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
           stroke: new ol.style.Stroke({ color: '#ffffff', width: 3 })
         })
       }),
-      // Nokta İçi Merkez
       new ol.style.Style({
         image: new ol.style.Circle({
           radius: 4,
@@ -134,20 +130,20 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
   };
 
-  // Detay Vektör Katmanı (Zoom >= 11 iken görünür - ISSUE 1 Çözümü)
+  // Detailed Vector Layer (Zoom >= 11 - ISSUE 1 Solution)
   const detailVectorLayer = new ol.layer.Vector({
     source: detailSource,
-    minZoom: 11, // ISSUE 1: Zoom < 11 iken çakışmayı önlemek için gizlenir
+    minZoom: 11, // ISSUE 1: Hidden when Zoom < 11 to avoid clutters
     style: (feature) => createMarkerStyle(feature.get('data'))
   });
 
-  // Özet Bölge Katmanı (Zoom < 11 iken tek bir Ankara staj kümesi gösterir)
+  // Regional Cluster Marker (Visible when Zoom < 11 at country scale)
   const clusterFeature = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([32.835, 39.920])),
     data: {
-      name: "Ankara Staj Bölgesi",
-      role: "3 Staj Noktası",
-      desc: "İşaretçileri detaylı incelemek için haritaya yakınlaşınız (Zoom ≥ 11)."
+      name: "Ankara Internship Region",
+      role: "3 Internship Sites",
+      desc: "Zoom in (Zoom ≥ 11) to view individual internship locations and details."
     }
   });
 
@@ -161,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stroke: new ol.style.Stroke({ color: '#ffffff', width: 3 })
       }),
       text: new ol.style.Text({
-        text: "📍 Ankara (3 Staj Noktası - Yakınlaşınız)",
+        text: "📍 Ankara (3 Internships - Zoom In)",
         font: 'bold 12px "Open Sans", sans-serif',
         offsetY: 24,
         fill: new ol.style.Fill({ color: '#205493' }),
@@ -172,13 +168,13 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   });
 
-  // Harita Görünümü (View) - ISSUE 2: Extent Kısıtlaması
+  // Map View - ISSUE 2: Extent Constrained
   const view = new ol.View({
     center: ANKARA_CENTER,
     zoom: 12,
     minZoom: 4,
     maxZoom: 19,
-    extent: maxExtent // ISSUE 2: Kullanıcının dünya sınırları ötesine kaymasını engeller
+    extent: maxExtent // ISSUE 2: Constrains panning outside world boundary
   });
 
   const map = new ol.Map({
@@ -187,9 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
     view: view
   });
 
-  // ==========================================================================
-  // POPUP BİLGİ PENCERESİ (OVERLAY)
-  // ==========================================================================
+  // Popup Overlay
   const popupContainer = document.getElementById('olPopup');
   const popupCloser = document.getElementById('olPopupCloser');
   const popupContent = document.getElementById('olPopupContent');
@@ -208,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  // Tıklama ile Bilgi Açma
+  // Open Popup on Click
   map.on('singleclick', (evt) => {
     const feature = map.forEachFeatureAtPixel(evt.pixel, (f) => f);
     if (feature) {
@@ -232,16 +226,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // İşaretçi Üzerinde İmleç Değişimi
   map.on('pointermove', (e) => {
     const pixel = map.getEventPixel(e.originalEvent);
     const hit = map.hasFeatureAtPixel(pixel);
     map.getTargetElement().style.cursor = hit ? 'pointer' : '';
   });
 
-  // ==========================================================================
-  // HARİTA KONTROL BUTONLARI & KATMAN DEĞİŞTİRME
-  // ==========================================================================
+  // Toolbar Actions
   const btnFocusAnkaraIntern = document.getElementById('btnFocusAnkaraIntern');
   if (btnFocusAnkaraIntern) {
     btnFocusAnkaraIntern.addEventListener('click', () => {
@@ -256,14 +247,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Altlık Katman Seçimi (Standart Harita vs Uydu)
+  // Toggle Basemap (Street vs Satellite)
   const btnToggleLayer = document.getElementById('btnToggleOlLayer');
   if (btnToggleLayer) {
     btnToggleLayer.addEventListener('click', () => {
       const isSat = satelliteLayer.getVisible();
       satelliteLayer.setVisible(!isSat);
       cartoLayer.setVisible(isSat);
-      btnToggleLayer.textContent = isSat ? "🗺️ Uydu Görüntüsüne Geç" : "🗺️ Standart Haritaya Geç";
+      btnToggleLayer.textContent = isSat ? "🗺️ Switch to Satellite" : "🗺️ Switch to Street Map";
     });
   }
 });

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anasayfa | Geomatik Mühendisliği & Web GIS</title>
+  <title>Home | Aslı Özteker - Web GIS Portfolio</title>
   
-  <!-- Font -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -13,76 +13,77 @@
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   
-  <!-- CSS Dosyaları -->
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
 
-  <!-- SABİT ÜST MENÜ (STICKY NAVBAR) -->
+  <!-- STICKY TOP NAVBAR -->
   <header class="site-header">
     <div class="nav-container">
       <div class="site-title">
-        <a href="index.html">Geomatik Mühendisliği</a>
+        <a href="index.html">Aslı Özteker</a>
         <span class="site-subtitle">| GMT 458 Web GIS</span>
       </div>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Menü">☰</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">☰</button>
 
       <ul class="nav-menu" id="navMenu">
-        <li class="nav-item"><a href="index.html" class="active">Anasayfa</a></li>
-        <li class="nav-item"><a href="resume.html">Özgeçmiş & Yetkinlikler</a></li>
-        <li class="nav-item"><a href="courses.html">Geçmiş ve Aktif Dersler</a></li>
-        <li class="nav-item"><a href="projects.html">Projeler</a></li>
+        <li class="nav-item"><a href="index.html" class="active">Home</a></li>
+        <li class="nav-item"><a href="resume.html">Resume & Skills</a></li>
+        <li class="nav-item"><a href="courses.html">Past & Active Courses</a></li>
+        <li class="nav-item"><a href="projects.html">Projects</a></li>
       </ul>
     </div>
   </header>
 
-  <!-- ANA İÇERİK KAPSAYICISI -->
+  <!-- MAIN CONTENT WRAPPER -->
   <main class="site-wrapper fade-in">
     <div class="content-card">
-      <h1 class="page-title">Kişisel Web Sayfası & Portfolyo</h1>
+      <h1 class="page-title">Personal Web Page & GIS Portfolio</h1>
       
-      <!-- Profil ve Özgeçmiş Alanı -->
+      <!-- Profile & Biography Section -->
       <div class="profile-intro-layout">
         <div class="profile-photo-box">
-          <img src="assets/images/avatar.svg" alt="Profil Fotoğrafı" class="profile-img">
+          <img src="assets/images/avatar.svg" alt="Profile Picture" class="profile-img">
           <div class="profile-meta">
-            <strong>Geomatik Mühendisliği</strong><br>
-            <span>Hacettepe Üniversitesi</span><br>
-            <small>Beytepe Kampüsü, Ankara</small>
+            <strong>Aslı Özteker</strong><br>
+            <span>Department of Geomatics Engineering</span><br>
+            <span>Hacettepe University</span><br>
+            <small>Beytepe Campus, Ankara, Turkey</small>
           </div>
         </div>
 
         <div class="bio-placeholder-box">
-          <h2 style="font-size: 1.15rem; margin-bottom: 0.6rem; color: #222;">Hakkımda</h2>
+          <h2 style="font-size: 1.15rem; margin-bottom: 0.6rem; color: #222;">About Me</h2>
           <p>
-            <em>[Bu alan kişisel özgeçmiş ve tanıtım metniniz için ayrılmıştır. Akademik ilgi alanlarınızı, harita mühendisliği çalışmalarınızı ve hedeflerinizi buraya ekleyebilirsiniz.]</em>
+            <em>[This section is reserved for your personal biography and introduction. You can describe your academic background, research interests in Geomatics Engineering, and goals in Web GIS and spatial data science here.]</em>
           </p>
           <span class="placeholder-note">
-            İpucu: Özgeçmiş metninizi bu kutunun içerisine istediğiniz uzunlukta yazabilirsiniz.
+            Note: You can edit and expand your personal introduction inside this section anytime.
           </span>
         </div>
       </div>
 
-      <!-- AKADEMİK YAŞAMIM (LEAFLET HARİTASI) -->
+      <!-- ACADEMIC LIFE (LEAFLET MAP) -->
       <h2 class="section-heading">
-        <span>Akademik Yaşamım (Ankara / Beytepe)</span>
-        <span style="font-size: 0.8rem; font-weight: normal; color: #666;">Leaflet Haritası</span>
+        <span>Academic Life (Ankara / Beytepe)</span>
+        <span style="font-size: 0.8rem; font-weight: normal; color: #666;">Leaflet Map</span>
       </h2>
       <p class="section-lead">
-        Hacettepe Üniversitesi Geomatik (Harita) Mühendisliği Bölümü'nün konumu ve yerleşkesi.
+        Location of Hacettepe University Department of Geomatics (Surveying) Engineering, Beytepe Campus.
       </p>
 
       <div class="map-frame">
         <div class="map-toolbar">
           <div>
             <span class="pulse-indicator"></span>
-            <span id="leafletZoomText">Zoom Seviyesi Yükleniyor...</span>
+            <span id="leafletZoomText">Loading zoom level...</span>
           </div>
           <div class="map-buttons">
-            <button class="map-btn" id="btnFocusGeomatik">Bölüme Odaklan (Beytepe)</button>
-            <button class="map-btn" id="btnFocusAnkara">Ankara Genel Görünüm</button>
+            <button class="map-btn" id="btnFocusGeomatik">Focus on Department</button>
+            <button class="map-btn" id="btnFocusAnkara">Ankara Overview</button>
           </div>
         </div>
 
@@ -92,22 +93,22 @@
       </div>
 
       <p class="map-caption">
-        <strong>Konum:</strong> Hacettepe Üniversitesi Beytepe Kampüsü, Geomatik Mühendisliği Bölümü (39.865742° K, 32.733950° D).
+        <strong>Location:</strong> Department of Geomatics Engineering, Hacettepe University Beytepe Campus (39.865742° N, 32.733950° E).
       </p>
 
-      <!-- Sade Teknik Açıklama Notu (Issue 1 & Issue 2) -->
+      <!-- Technical Assignment Notes (Issue 1 & Issue 2) -->
       <div class="technical-notes">
-        <strong>Teknik Harita Özellikleri (GMT 458):</strong><br>
-        • <strong>Issue 1 (Zoom Threshold):</strong> İşaretçilerin üst üste binmesini önlemek amacıyla kampüs içi alt laboratuvarlar yalnızca harita yakınlaştırıldığında (Zoom ≥ 15) aktif olur.<br>
-        • <strong>Issue 2 (Earth Repeating):</strong> Harita uzaklaştırıldığında dünyanın doğu-batı ekseninde kopyalanması <code>noWrap: true</code> ve <code>maxBounds</code> sınırlandırması ile engellenmiştir.
+        <strong>Technical Map Implementation (GMT 458):</strong><br>
+        • <strong>Issue 1 (Zoom Threshold):</strong> Sub-facility markers across campus only appear when zoomed in (Zoom ≥ 15) to prevent overlapping at smaller scales.<br>
+        • <strong>Issue 2 (Earth Repeating):</strong> Repeated world tiles horizontally are prevented using <code>noWrap: true</code> and <code>maxBounds</code> constraints.
       </div>
     </div>
   </main>
 
-  <!-- ALT BİLGİ (FOOTER) -->
+  <!-- SITE FOOTER -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <span>Hacettepe Üniversitesi Geomatik Mühendisliği • GMT 458 Web GIS</span>
+      <span>Hacettepe University Department of Geomatics Engineering • GMT 458 Web GIS</span>
       <span>Ankara, 2026</span>
     </div>
   </footer>
@@ -115,7 +116,7 @@
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   
-  <!-- JS Dosyaları -->
+  <!-- JavaScript Files -->
   <script src="js/leaflet-map.js"></script>
   <script src="js/main.js"></script>
 </body>

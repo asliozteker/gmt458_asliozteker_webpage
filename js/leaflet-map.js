@@ -1,31 +1,28 @@
 /**
- * Leaflet Haritası - Hacettepe Üniversitesi Geomatik Mühendisliği
- * Akademik Yaşam & Ankara Odaklı Harita
+ * Leaflet Map - Hacettepe University Department of Geomatics Engineering
+ * Academic Life & Ankara Focused Map
  * 
- * 403 Access Blocked hatasını önlemek için CartoDB Voyager ve Esri altlıkları kullanılmıştır.
- * GMT 458 Yönerge Kazanımları:
- * - Issue 1 Çözümü: Zoom eşiği (Zoom Threshold) ile alt laboratuvar işaretçilerinin yönetimi
- * - Issue 2 Çözümü: Harita uzaklaştırıldığında dünyanın kendini tekrarlamasını engelleme (noWrap & maxBounds)
+ * Uses reliable CartoDB Voyager and Esri basemaps to prevent 403 Access Blocked errors.
+ * GMT 458 Assignment Objectives:
+ * - Issue 1 Solution: Marker zoom threshold to manage sub-facilities and avoid clutters
+ * - Issue 2 Solution: Prevent earth repeating when zoomed out (noWrap: true & maxBounds)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   const mapElement = document.getElementById('leafletMap');
   if (!mapElement) return;
 
-  // Hacettepe Üniversitesi Geomatik (Harita) Mühendisliği Bölümü Koordinatları
+  // Hacettepe University Department of Geomatics Engineering Coordinates
   const GEOMATIK_COORDS = [39.86574196299712, 32.733949892817506];
   const ANKARA_CENTER = [39.92077, 32.85411];
 
-  // ==========================================================================
-  // ISSUE 2 ÇÖZÜMÜ: Earth repeating itself when zoomed out
-  // noWrap: true ve maxBounds ile dünyanın yatay kopyalanması engellenir
-  // ==========================================================================
+  // ISSUE 2 SOLUTION: Earth repeating itself when zoomed out
   const worldBounds = L.latLngBounds(L.latLng(-85, -180), L.latLng(85, 180));
 
-  // 403 Hatası Vermeyen Güvenilir Altlıklar (CartoDB Voyager & Esri)
+  // Non-blocking Basemaps (CartoDB Voyager & Esri)
   const cartoVoyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-    noWrap: true, // ISSUE 2: Dünyanın tekrar etmesini engeller!
+    noWrap: true, // ISSUE 2: Prevents world from repeating horizontally
     bounds: worldBounds,
     maxZoom: 19
   });
@@ -54,19 +51,16 @@ document.addEventListener('DOMContentLoaded', () => {
     layers: [cartoVoyager]
   });
 
-  // Katman Seçici (Layer Switcher)
+  // Layer Switcher
   const baseLayers = {
-    "Sokak Haritası (Carto Voyager)": cartoVoyager,
-    "Esri Sokak Haritası": esriStreet,
-    "Esri Uydu Görüntüsü": esriSatellite
+    "Street Map (Carto Voyager)": cartoVoyager,
+    "Esri Street Map": esriStreet,
+    "Esri Satellite Imagery": esriSatellite
   };
   L.control.layers(baseLayers, null, { position: 'topright' }).addTo(map);
   L.control.scale({ imperial: false, metric: true, position: 'bottomright' }).addTo(map);
 
-  // ==========================================================================
-  // ÖZEL PİN İŞARETÇİSİ (HACETTEPE GEOMATİK MÜHENDİSLİĞİ)
-  // CDN görsel kırılmalarını önleyen şık vektörel Leaflet DivIcon
-  // ==========================================================================
+  // Custom Vector Pin for Hacettepe Geomatics Engineering
   const customPinIcon = L.divIcon({
     className: 'custom-pin-wrap',
     html: `
@@ -93,24 +87,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const mainMarker = L.marker(GEOMATIK_COORDS, { icon: customPinIcon }).addTo(map);
   mainMarker.bindPopup(`
-    <div style="font-family: inherit; font-size: 13px; line-height: 1.5; min-width: 200px;">
-      <h4 style="margin: 0 0 4px 0; color: #b91c1c; font-size: 14px;">Hacettepe Üniversitesi</h4>
-      <strong>Geomatik (Harita) Mühendisliği Bölümü</strong><br>
-      <span style="color: #555;">Beytepe Kampüsü, Çankaya, Ankara</span><br>
+    <div style="font-family: inherit; font-size: 13px; line-height: 1.5; min-width: 220px;">
+      <h4 style="margin: 0 0 4px 0; color: #b91c1c; font-size: 14px;">Hacettepe University</h4>
+      <strong>Department of Geomatics Engineering</strong><br>
+      <span style="color: #555;">Beytepe Campus, Çankaya, Ankara</span><br>
       <div style="margin-top: 6px; font-size: 11px; background: #f3f4f6; padding: 3px 6px; border-radius: 3px; font-family: monospace;">
-        📍 39.865742° K, 32.733950° D
+        📍 39.865742° N, 32.733950° E
       </div>
     </div>
   `).openPopup();
 
-  // ==========================================================================
-  // ISSUE 1 ÇÖZÜMÜ: Marker Zoom Threshold
-  // Kampüs alt birimleri yalnızca Zoom >= 15 iken görünür
-  // ==========================================================================
+  // ISSUE 1 SOLUTION: Marker Zoom Threshold
+  // Campus sub-facilities only appear when Zoom >= 15
   const subLocations = [
-    { name: "Fotogrametri ve CBS Laboratuvarı", coords: [39.86535, 32.73450], icon: "💻" },
-    { name: "Jeodezi & GNSS Gözlem İstasyonu", coords: [39.86620, 32.73310], icon: "📡" },
-    { name: "Uzaktan Algılama Araştırma Birimi", coords: [39.86660, 32.73480], icon: "🛰️" }
+    { name: "Photogrammetry & GIS Laboratory", coords: [39.86535, 32.73450], icon: "💻" },
+    { name: "Geodesy & GNSS Observation Station", coords: [39.86620, 32.73310], icon: "📡" },
+    { name: "Remote Sensing Research Facility", coords: [39.86660, 32.73480], icon: "🛰️" }
   ];
 
   const subGroup = L.layerGroup();
@@ -146,17 +138,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentZoom = map.getZoom();
     if (currentZoom >= 15) {
       if (!map.hasLayer(subGroup)) map.addLayer(subGroup);
-      if (zoomTextElement) zoomTextElement.textContent = `Zoom: ${currentZoom} (Eşik aşıldı: Alt laboratuvarlar aktif)`;
+      if (zoomTextElement) zoomTextElement.textContent = `Zoom: ${currentZoom} (Threshold met: Sub-laboratories visible)`;
     } else {
       if (map.hasLayer(subGroup)) map.removeLayer(subGroup);
-      if (zoomTextElement) zoomTextElement.textContent = `Zoom: ${currentZoom} (Eşik altı: Çakışmayı önlemek için alt noktalar gizli)`;
+      if (zoomTextElement) zoomTextElement.textContent = `Zoom: ${currentZoom} (Below threshold: Sub-markers hidden to avoid clutter)`;
     }
   };
 
   map.on('zoomend', updateZoomThreshold);
   updateZoomThreshold();
 
-  // Toolbar Butonları
+  // Toolbar Actions
   const btnFocusGeomatik = document.getElementById('btnFocusGeomatik');
   if (btnFocusGeomatik) {
     btnFocusGeomatik.addEventListener('click', () => {
