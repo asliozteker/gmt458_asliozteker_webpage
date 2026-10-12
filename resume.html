@@ -1,6 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    // Downloads klasorunden acilsa bile otomatik sade adrese yonlendir
+    if (window.location.protocol === 'file:' && window.location.href.toLowerCase().indexOf('downloads') !== -1) {
+      var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      window.location.replace('file:///C:/Users/HP/asliozteker/' + currentPage);
+    }
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resume & Skills | Aslı Özteker - Web GIS Portfolio</title>
@@ -59,7 +66,7 @@
       <ul class="nav-menu" id="navMenu">
         <li class="nav-item"><a href="home.html">Home</a></li>
         <li class="nav-item"><a href="resume.html" class="active">Resume & Skills</a></li>
-        <li class="nav-item"><a href="courses.html">Past & Active Courses</a></li>
+        <li class="nav-item"><a href="courses.html">Courses</a></li>
         <li class="nav-item"><a href="contact.html">Contact</a></li>
       </ul>
     </div>
@@ -107,7 +114,8 @@
       </div>
 
       <p class="map-caption">
-        <strong>Marked Organizations:</strong> General Directorate of Highways (4th Regional Directorate), Küre Engineering, Doruk Surveying.
+        <strong>Internship Locations:</strong> Karayollar&#305; 4. B&ouml;lge M&uuml;d&uuml;rl&uuml;&#287;&uuml;, K&uuml;re M&uuml;hendislik, Doruk Harita.<br>
+        <small style="color: #64748b; font-style: italic; display: inline-block; margin-top: 4px;">* Bu canl&#305; harita <strong>OpenLayers (OL)</strong> k&uuml;t&uuml;phanesi kullan&#305;larak haz&#305;rlanm&#305;&#351;t&#305;r.</small>
       </p>
 
 

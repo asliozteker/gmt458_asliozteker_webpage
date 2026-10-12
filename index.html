@@ -1,6 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    // Downloads klasorunden acilsa bile otomatik sade adrese yonlendir
+    if (window.location.protocol === 'file:' && window.location.href.toLowerCase().indexOf('downloads') !== -1) {
+      var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      window.location.replace('file:///C:/Users/HP/asliozteker/' + currentPage);
+    }
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome | Asli Ozteker - Web GIS Portfolio</title>

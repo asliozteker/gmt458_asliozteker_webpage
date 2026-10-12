@@ -1,9 +1,16 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    // Downloads klasorunden acilsa bile otomatik sade adrese yonlendir
+    if (window.location.protocol === 'file:' && window.location.href.toLowerCase().indexOf('downloads') !== -1) {
+      var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      window.location.replace('file:///C:/Users/HP/asliozteker/' + currentPage);
+    }
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Past & Active Courses | Aslı Özteker - Web GIS Portfolio</title>
+  <title>Courses | AslÄ± Ã–zteker - Web GIS Portfolio</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,16 +27,15 @@
   <header class="site-header">
     <div class="nav-container">
       <div class="site-title">
-        <a href="home.html">Aslı Özteker</a>
-        <span class="site-subtitle">| GMT 458 Web GIS</span>
+        <a href="home.html">AslÄ± Ã–zteker</a>
       </div>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">☰</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">â˜°</button>
 
       <ul class="nav-menu" id="navMenu">
         <li class="nav-item"><a href="home.html">Home</a></li>
         <li class="nav-item"><a href="resume.html">Resume & Skills</a></li>
-        <li class="nav-item"><a href="courses.html" class="active">Past & Active Courses</a></li>
+        <li class="nav-item"><a href="courses.html" class="active">Courses</a></li>
         <li class="nav-item"><a href="contact.html">Contact</a></li>
       </ul>
     </div>
@@ -38,167 +44,80 @@
   <!-- MAIN CONTENT WRAPPER -->
   <main class="site-wrapper fade-in">
     <div class="content-card">
-      <h1 class="page-title">Past & Active Courses</h1>
+      <h1 class="page-title">Active Courses</h1>
       <p class="section-lead">
         Undergraduate curriculum courses taken at Hacettepe University Department of Geomatics Engineering.
       </p>
 
-      <!-- TABULAR INFORMATION WITH IMAGES: ACTIVE COURSES -->
+      <!-- ACTIVE COURSES (LOGOSUZ VE SADE TABLO) -->
       <h2 class="section-heading">
         <span>Active Courses (Fall 2026-2027 Semester)</span>
       </h2>
 
-      <table class="academic-table">
+            <table class="academic-table">
         <thead>
           <tr>
-            <th>Course Code & Title</th>
-            <th>Credits / ECTS</th>
-            <th>Topics & Technologies</th>
+            <th style="width: 55px;">#</th>
+            <th>Course Title</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>
-              <div class="table-logo-cell">
-                <img src="assets/images/course_webgis.svg" alt="GMT 458" class="table-logo-img">
-                <div>
-                  <strong>GMT 458 – Web GIS</strong><br>
-                  <small style="color: #666;">Web-based Geographic Information Systems</small>
-                </div>
-              </div>
-            </td>
-            <td>3 Credits (5 ECTS)</td>
-            <td>Leaflet, OpenLayers, GeoJSON, OGC Web Services, HTML5/CSS3</td>
-            <td><span class="badge-tag">Enrolled</span></td>
+            <td>1</td>
+            <td><strong>FOTOGRAMETR&#304;</strong></td>
+            <td><span class="badge-tag">Active</span></td>
           </tr>
-
           <tr>
-            <td>
-              <div class="table-logo-cell">
-                <img src="assets/images/course_photo.svg" alt="GMT 401" class="table-logo-img">
-                <div>
-                  <strong>GMT 401 – Digital Photogrammetry & UAV</strong><br>
-                  <small style="color: #666;">Unmanned Aerial Vehicles & 3D Surface Modeling</small>
-                </div>
-              </div>
-            </td>
-            <td>3 Credits (5 ECTS)</td>
-            <td>Agisoft Metashape, Orthophoto Generation, DEM / DTM</td>
-            <td><span class="badge-tag">Enrolled</span></td>
+            <td>2</td>
+            <td><strong>&#304;NTERNET TABANLI CBS</strong></td>
+            <td><span class="badge-tag">Active</span></td>
           </tr>
-
           <tr>
-            <td>
-              <div class="table-logo-cell">
-                <img src="assets/images/course_geodesy.svg" alt="GMT 435" class="table-logo-img">
-                <div>
-                  <strong>GMT 435 – Satellite Geodesy & GNSS</strong><br>
-                  <small style="color: #666;">Satellite-based Precise Positioning</small>
-                </div>
-              </div>
-            </td>
-            <td>3 Credits (5 ECTS)</td>
-            <td>GNSS RTK, CORS Network Analysis, Tropospheric Error Modeling</td>
-            <td><span class="badge-tag">Enrolled</span></td>
+            <td>3</td>
+            <td><strong>&Ccedil;OK D&#304;S&#304;PL&#304;NL&#304; PROJE &Ccedil;ALI&#350;MASI</strong></td>
+            <td><span class="badge-tag">Active</span></td>
           </tr>
-
           <tr>
-            <td>
-              <div class="table-logo-cell">
-                <img src="assets/images/course_rs.svg" alt="GMT 423" class="table-logo-img">
-                <div>
-                  <strong>GMT 423 – Spatial Decision Support Systems</strong><br>
-                  <small style="color: #666;">Multi-Criteria Spatial Evaluation</small>
-                </div>
-              </div>
-            </td>
-            <td>3 Credits (5 ECTS)</td>
-            <td>AHP Analysis, Site Selection Modeling, QGIS & Python Integration</td>
-            <td><span class="badge-tag">Enrolled</span></td>
+            <td>4</td>
+            <td><strong>CO&#284;RAF&#304; B&#304;LG&#304; S&#304;STEMLER&#304;</strong></td>
+            <td><span class="badge-tag">Active</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>ARAZ&#304; B&#304;LG&#304; Y&Ouml;NET&#304;M&#304;</strong></td>
+            <td><span class="badge-tag">Active</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><strong>OLASILIK</strong></td>
+            <td><span class="badge-tag">Active</span></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><strong>UYDU JEODEZ&#304;S&#304;NE G&#304;R&#304;&#350;</strong></td>
+            <td><span class="badge-tag">Active</span></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><strong>FOTOGRAMETR&#304;K G&Ouml;R&Uuml;NT&Uuml; ANAL&#304;Z&#304;</strong></td>
+            <td><span class="badge-tag">Active</span></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td><strong>Y&Ouml;R&Uuml;NGE MEKAN&#304;&#284;&#304; VE ASTRONOM&#304;</strong></td>
+            <td><span class="badge-tag">Active</span></td>
           </tr>
         </tbody>
       </table>
 
-      <!-- TABULAR INFORMATION WITH IMAGES: COMPLETED COURSES -->
-      <h2 class="section-heading" style="margin-top: 2.5rem;">
-        <span>Completed Core Courses</span>
-      </h2>
-
-      <table class="academic-table">
-        <thead>
-          <tr>
-            <th>Course Code & Title</th>
-            <th>Semester</th>
-            <th>Scope & Software</th>
-            <th>Grade</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <div class="table-logo-cell">
-                <img src="assets/images/course_rs.svg" alt="GMT 352" class="table-logo-img">
-                <div>
-                  <strong>GMT 352 – Remote Sensing</strong>
-                </div>
-              </div>
-            </td>
-            <td>Spring 2026</td>
-            <td>Sentinel-2 Imagery, SNAP Toolbox, NDVI Analysis</td>
-            <td><strong>A1</strong></td>
-          </tr>
-
-          <tr>
-            <td>
-              <div class="table-logo-cell">
-                <img src="assets/images/course_webgis.svg" alt="GMT 312" class="table-logo-img">
-                <div>
-                  <strong>GMT 312 – Spatial Database Systems</strong>
-                </div>
-              </div>
-            </td>
-            <td>Fall 2025</td>
-            <td>PostgreSQL, PostGIS, Spatial SQL Queries</td>
-            <td><strong>A1</strong></td>
-          </tr>
-
-          <tr>
-            <td>
-              <div class="table-logo-cell">
-                <img src="assets/images/course_geodesy.svg" alt="GMT 341" class="table-logo-img">
-                <div>
-                  <strong>GMT 341 – Geodetic Network Design & Adjustment</strong>
-                </div>
-              </div>
-            </td>
-            <td>Spring 2025</td>
-            <td>Least Squares Adjustment, Error Theory, GPS Vectors</td>
-            <td><strong>A2</strong></td>
-          </tr>
-
-          <tr>
-            <td>
-              <div class="table-logo-cell">
-                <img src="assets/images/course_photo.svg" alt="GMT 224" class="table-logo-img">
-                <div>
-                  <strong>GMT 224 – Cartography & Map Design</strong>
-                </div>
-              </div>
-            </td>
-            <td>Fall 2024</td>
-            <td>Thematic Cartography, Symbology, Map Projections</td>
-            <td><strong>A1</strong></td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </main>
 
   <!-- SITE FOOTER -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <span>Hacettepe University Department of Geomatics Engineering • GMT 458 Web GIS</span>
+      <span>Hacettepe University Department of Geomatics Engineering &bull; GMT 458 Web GIS</span>
       <span>Ankara, 2026</span>
     </div>
   </footer>

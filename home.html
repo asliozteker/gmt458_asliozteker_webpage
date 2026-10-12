@@ -1,6 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    // Downloads klasorunden acilsa bile otomatik sade adrese yonlendir
+    if (window.location.protocol === 'file:' && window.location.href.toLowerCase().indexOf('downloads') !== -1) {
+      var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      window.location.replace('file:///C:/Users/HP/asliozteker/' + currentPage);
+    }
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home | Aslı Özteker - Web GIS Portfolio</title>
@@ -24,7 +31,7 @@
     <div class="nav-container">
       <div class="site-title">
         <a href="home.html">Aslı Özteker</a>
-        <span class="site-subtitle">| GMT 458 Web GIS</span>
+        
       </div>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">☰</button>
@@ -32,7 +39,7 @@
       <ul class="nav-menu" id="navMenu">
         <li class="nav-item"><a href="home.html" class="active">Home</a></li>
         <li class="nav-item"><a href="resume.html">Resume & Skills</a></li>
-        <li class="nav-item"><a href="courses.html">Past & Active Courses</a></li>
+        <li class="nav-item"><a href="courses.html">Courses</a></li>
         <li class="nav-item"><a href="contact.html">Contact</a></li>
       </ul>
     </div>
@@ -94,7 +101,8 @@
       </div>
 
       <p class="map-caption">
-        <strong>Location:</strong> Department of Geomatics Engineering, Hacettepe University Beytepe Campus (39.865742° N, 32.733950° E).
+        <strong>Location:</strong> Department of Geomatics Engineering, Hacettepe University Beytepe Campus (39.865742&deg; N, 32.733950&deg; E).<br>
+        <small style="color: #64748b; font-style: italic; display: inline-block; margin-top: 4px;">* Bu canl&#305; harita <strong>Leaflet JS</strong> k&uuml;t&uuml;phanesi kullan&#305;larak haz&#305;rlanm&#305;&#351;t&#305;r.</small>
       </p>
 
     </div>
