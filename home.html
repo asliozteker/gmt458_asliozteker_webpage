@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Aslı Özteker - Web GIS Portfolio</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- STICKY TOP NAVBAR -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="site-title">
+        <a href="home.html">Aslı Özteker</a>
+        <span class="site-subtitle">| GMT 458 Web GIS</span>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">☰</button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item"><a href="home.html" class="active">Home</a></li>
+        <li class="nav-item"><a href="resume.html">Resume & Skills</a></li>
+        <li class="nav-item"><a href="courses.html">Past & Active Courses</a></li>
+        <li class="nav-item"><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT WRAPPER -->
+  <main class="site-wrapper fade-in">
+    <div class="content-card">
+      
+      <!-- Academic Profile Header (Compact & Elegant) -->
+      <div class="academic-profile-header">
+        <div class="profile-avatar-wrap">
+          <img src="assets/images/avatar.svg" alt="Aslı Özteker" class="profile-avatar-img">
+        </div>
+        <div class="profile-header-info">
+          <h1 class="profile-name-title">Aslı Özteker</h1>
+          <p class="profile-affiliation">
+            Department of Geomatics (Surveying) Engineering<br>
+            Hacettepe University, Beytepe Campus, Ankara, Turkey
+          </p>
+          <div class="contact-meta-row">
+            <span class="contact-badge-item">
+              <span class="contact-icon-mini">✉</span>
+              <a href="mailto:asliozteker@hacettepe.edu.tr">asliozteker@hacettepe.edu.tr</a>
+            </span>
+            <span class="contact-badge-item">
+              <span class="contact-icon-mini"><span class="anim-pin-bounce">📍</span></span>
+              <span>Ankara</span>
+            </span>
+            <span class="profile-tag">GMT 458 – Web GIS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Me / Biography Section -->
+      <div class="academic-bio-section">
+        <h2 class="bio-heading">About Me</h2>
+        <div class="bio-text-box">
+          <p>
+            <em>[This section is reserved for your personal biography and introduction. You can describe your academic background, research interests in Geomatics Engineering, and goals in Web GIS and spatial data science here.]</em>
+          </p>
+        </div>
+      </div>
+
+      <!-- ACADEMIC LIFE (LEAFLET MAP) -->
+      <h2 class="section-heading">
+        <span>Academic Life (Ankara / Beytepe)</span>
+        <span style="font-size: 0.8rem; font-weight: normal; color: #666;">Leaflet Map</span>
+      </h2>
+      <p class="section-lead">
+        Location of Hacettepe University Department of Geomatics Engineering, Beytepe Campus.
+      </p>
+
+      <div class="map-frame">
+        <div class="map-toolbar">
+          <div>
+            <span class="pulse-indicator"></span>
+            <span id="leafletZoomText">Loading zoom level...</span>
+          </div>
+          <div class="map-buttons">
+            <button class="map-btn" id="btnFocusGeomatik">Focus on Department</button>
+            <button class="map-btn" id="btnFocusAnkara">Ankara Overview</button>
+          </div>
+        </div>
+
+        <div class="map-container-box">
+          <div id="leafletMap"></div>
+        </div>
+      </div>
+
+      <p class="map-caption">
+        <strong>Location:</strong> Department of Geomatics Engineering, Hacettepe University Beytepe Campus (39.865742° N, 32.733950° E).
+      </p>
+
+    </div>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>Hacettepe University Department of Geomatics Engineering • GMT 458 Web GIS</span>
+      <span>Ankara, 2026</span>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- JavaScript Files -->
+  <script src="js/leaflet-map.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

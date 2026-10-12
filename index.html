@@ -1,128 +1,513 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | Aslı Özteker - Web GIS Portfolio</title>
+  <title>Welcome | AslÄ± Ã–zteker - Web GIS Portfolio</title>
   
-  <!-- Fonts -->
+  <!-- Fonts (Consistent with Portfolio) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-  
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/animations.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       WELCOME LANDING PAGE - 3D WORLD GLOBE ANIMATION
+       AslÄ± Ã–zteker - GMT 458 Web GIS
+       ========================================================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #080d1a;
+      font-family: 'Inter', 'Open Sans', -apple-system, sans-serif;
+      color: #ffffff;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* 3D Canvas */
+    #globeCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: block;
+    }
+
+    /* Minimalist Overlay */
+    .welcome-overlay {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3rem 1.5rem;
+      pointer-events: none;
+    }
+
+    /* Top Subtitle Pill */
+    .top-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #0284c7;
+      background: rgba(14, 23, 42, 0.7);
+      border: 1px solid rgba(2, 132, 199, 0.35);
+      padding: 0.45rem 1.2rem;
+      border-radius: 50px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.15); }
+    }
+
+    /* Center: WELCOME */
+    .center-text-box {
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: auto;
+      transform: translateY(-8px);
+    }
+
+    .welcome-title {
+      font-size: clamp(3.5rem, 9.5vw, 7.8rem);
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      line-height: 1;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px rgba(56, 189, 248, 0.3);
+      margin-bottom: 0.8rem;
+      animation: welcomeGlow 3.5s ease-in-out infinite alternate;
+    }
+
+    .welcome-subtitle {
+      font-size: clamp(0.85rem, 1.8vw, 1.15rem);
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      color: rgba(203, 213, 225, 0.75);
+      text-transform: uppercase;
+    }
+
+    @keyframes welcomeGlow {
+      from { filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.2)); }
+      to { filter: drop-shadow(0 0 35px rgba(56, 189, 248, 0.5)); }
+    }
+
+    /* Bottom: Silik click yazÄ±sÄ± */
+    .bottom-prompt {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: fadeIn 1.8s ease-out;
+    }
+
+    .faint-click {
+      font-family: 'Inter', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.32); /* Faint & subtle as requested */
+      animation: faintBreathing 2.6s ease-in-out infinite;
+    }
+
+    .mouse-icon {
+      width: 18px;
+      height: 28px;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      position: relative;
+      margin-top: 2px;
+    }
+
+    .mouse-wheel {
+      width: 3px;
+      height: 6px;
+      background-color: rgba(56, 189, 248, 0.7);
+      border-radius: 2px;
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: scrollWheel 2s infinite;
+    }
+
+    @keyframes scrollWheel {
+      0% { top: 5px; opacity: 1; }
+      100% { top: 15px; opacity: 0; }
+    }
+
+    @keyframes faintBreathing {
+      0%, 100% { opacity: 0.25; transform: translateY(0); }
+      50% { opacity: 0.7; transform: translateY(-3px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Transition Flash */
+    #warpOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(8, 13, 26, 0.98) 75%);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.45s ease;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- STICKY TOP NAVBAR -->
-  <header class="site-header">
-    <div class="nav-container">
-      <div class="site-title">
-        <a href="index.html">Aslı Özteker</a>
-        <span class="site-subtitle">| GMT 458 Web GIS</span>
-      </div>
+  <!-- 3D Earth Globe Canvas -->
+  <canvas id="globeCanvas"></canvas>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">☰</button>
-
-      <ul class="nav-menu" id="navMenu">
-        <li class="nav-item"><a href="index.html" class="active">Home</a></li>
-        <li class="nav-item"><a href="resume.html">Resume & Skills</a></li>
-        <li class="nav-item"><a href="courses.html">Past & Active Courses</a></li>
-        <li class="nav-item"><a href="contact.html">Contact</a></li>
-      </ul>
+  <!-- Welcome Overlay UI -->
+  <div class="welcome-overlay" id="welcomeOverlay">
+    <div class="top-badge">
+      <div class="pulse-dot"></div>
+      <span>AslÄ± Ã–zteker â€¢ GMT 458 Web GIS</span>
     </div>
-  </header>
 
-  <!-- MAIN CONTENT WRAPPER -->
-  <main class="site-wrapper fade-in">
-    <div class="content-card">
-      
-      <!-- Academic Profile Header (Compact & Elegant) -->
-      <div class="academic-profile-header">
-        <div class="profile-avatar-wrap">
-          <img src="assets/images/avatar.svg" alt="Aslı Özteker" class="profile-avatar-img">
-        </div>
-        <div class="profile-header-info">
-          <h1 class="profile-name-title">Aslı Özteker</h1>
-          <p class="profile-affiliation">
-            Department of Geomatics (Surveying) Engineering<br>
-            Hacettepe University, Beytepe Campus, Ankara, Turkey
-          </p>
-          <div class="contact-meta-row">
-            <span class="contact-badge-item">
-              <span class="contact-icon-mini">✉</span>
-              <a href="mailto:asliozteker@hacettepe.edu.tr">asliozteker@hacettepe.edu.tr</a>
-            </span>
-            <span class="contact-badge-item">
-              <span class="contact-icon-mini"><span class="anim-pin-bounce">📍</span></span>
-              <span>Ankara</span>
-            </span>
-            <span class="profile-tag">GMT 458 – Web GIS</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- About Me / Biography Section -->
-      <div class="academic-bio-section">
-        <h2 class="bio-heading">About Me</h2>
-        <div class="bio-text-box">
-          <p>
-            <em>[This section is reserved for your personal biography and introduction. You can describe your academic background, research interests in Geomatics Engineering, and goals in Web GIS and spatial data science here.]</em>
-          </p>
-        </div>
-      </div>
-
-      <!-- ACADEMIC LIFE (LEAFLET MAP) -->
-      <h2 class="section-heading">
-        <span>Academic Life (Ankara / Beytepe)</span>
-        <span style="font-size: 0.8rem; font-weight: normal; color: #666;">Leaflet Map</span>
-      </h2>
-      <p class="section-lead">
-        Location of Hacettepe University Department of Geomatics Engineering, Beytepe Campus.
-      </p>
-
-      <div class="map-frame">
-        <div class="map-toolbar">
-          <div>
-            <span class="pulse-indicator"></span>
-            <span id="leafletZoomText">Loading zoom level...</span>
-          </div>
-          <div class="map-buttons">
-            <button class="map-btn" id="btnFocusGeomatik">Focus on Department</button>
-            <button class="map-btn" id="btnFocusAnkara">Ankara Overview</button>
-          </div>
-        </div>
-
-        <div class="map-container-box">
-          <div id="leafletMap"></div>
-        </div>
-      </div>
-
-      <p class="map-caption">
-        <strong>Location:</strong> Department of Geomatics Engineering, Hacettepe University Beytepe Campus (39.865742° N, 32.733950° E).
-      </p>
-
+    <div class="center-text-box">
+      <h1 class="welcome-title">WELCOME</h1>
+      <p class="welcome-subtitle">Department of Geomatics Engineering</p>
     </div>
-  </main>
 
-  <!-- SITE FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <span>Hacettepe University Department of Geomatics Engineering • GMT 458 Web GIS</span>
-      <span>Ankara, 2026</span>
+    <div class="bottom-prompt">
+      <div class="faint-click">c l i c k</div>
+      <div class="mouse-icon">
+        <div class="mouse-wheel"></div>
+      </div>
     </div>
-  </footer>
+  </div>
 
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  
-  <!-- JavaScript Files -->
-  <script src="js/leaflet-map.js"></script>
-  <script src="js/main.js"></script>
+  <div id="warpOverlay"></div>
+
+  <!-- Pure HTML5 Canvas 3D Orthographic Engine -->
+  <script>
+    (function () {
+      const canvas = document.getElementById('globeCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      let radius = Math.min(width, height) * 0.32;
+      let rotationY = 0.5;
+      let rotationX = 0.35;
+      let autoSpeed = 0.005;
+
+      let targetRotX = rotationX;
+      let isWarping = false;
+      let warpScale = 1.0;
+      let warpOpacity = 1.0;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        radius = Math.min(width, height) * 0.32;
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        const normY = (e.clientY / height - 0.5) * 2;
+        targetRotX = 0.35 + normY * 0.25;
+      });
+
+      // Point cloud for continents
+      const landPoints = [];
+      // Anatolia / Mediterranean / Europe
+      for (let lat = 36; lat <= 42; lat += 1.2) {
+        for (let lon = 26; lon <= 45; lon += 1.3) {
+          landPoints.push({ lat, lon, isTr: true });
+        }
+      }
+      // Europe
+      for (let lat = 42; lat <= 65; lat += 3) {
+        for (let lon = -10; lon <= 38; lon += 4) {
+          if (Math.random() > 0.3) landPoints.push({ lat, lon });
+        }
+      }
+      // Asia
+      for (let lat = 10; lat <= 70; lat += 4) {
+        for (let lon = 45; lon <= 135; lon += 4.5) {
+          if (Math.random() > 0.35) landPoints.push({ lat, lon });
+        }
+      }
+      // Africa
+      for (let lat = -35; lat <= 35; lat += 4) {
+        for (let lon = -15; lon <= 48; lon += 4.5) {
+          if (Math.random() > 0.4) landPoints.push({ lat, lon });
+        }
+      }
+      // Americas
+      for (let lat = 15; lat <= 68; lat += 4.5) {
+        for (let lon = -155; lon <= -60; lon += 5) {
+          if (Math.random() > 0.4) landPoints.push({ lat, lon });
+        }
+      }
+      for (let lat = -50; lat <= 12; lat += 4.5) {
+        for (let lon = -78; lon <= -35; lon += 5) {
+          if (Math.random() > 0.45) landPoints.push({ lat, lon });
+        }
+      }
+      // Australia
+      for (let lat = -38; lat <= -14; lat += 4.5) {
+        for (let lon = 115; lon <= 150; lon += 5) {
+          if (Math.random() > 0.4) landPoints.push({ lat, lon });
+        }
+      }
+
+      // Ankara / Hacettepe beacon (39.8657Â° N, 32.7339Â° E)
+      const ankaraPoint = { lat: 39.8657, lon: 32.7339, name: 'Ankara â€¢ Hacettepe' };
+
+      function project(latDeg, lonDeg, r) {
+        const lat = (latDeg * Math.PI) / 180;
+        const lon = (lonDeg * Math.PI) / 180 + rotationY;
+
+        let x = r * Math.cos(lat) * Math.sin(lon);
+        let y = -r * Math.sin(lat);
+        let z = r * Math.cos(lat) * Math.cos(lon);
+
+        const cosX = Math.cos(rotationX);
+        const sinX = Math.sin(rotationX);
+
+        const y2 = y * cosX - z * sinX;
+        const z2 = y * sinX + z * cosX;
+
+        return {
+          x: width / 2 + x,
+          y: height / 2 + y2,
+          z: z2,
+          visible: z2 > 0
+        };
+      }
+
+      function drawGraticule(r) {
+        ctx.lineWidth = 0.7;
+        for (let lat = -60; lat <= 60; lat += 30) {
+          ctx.beginPath();
+          let first = true;
+          for (let lon = 0; lon <= 360; lon += 6) {
+            const p = project(lat, lon, r);
+            if (p.visible) {
+              if (first) { ctx.moveTo(p.x, p.y); first = false; }
+              else { ctx.lineTo(p.x, p.y); }
+            } else {
+              first = true;
+            }
+          }
+          ctx.strokeStyle = lat === 0 ? 'rgba(56, 189, 248, 0.35)' : 'rgba(255, 255, 255, 0.08)';
+          ctx.stroke();
+        }
+
+        for (let lon = 0; lon < 360; lon += 30) {
+          ctx.beginPath();
+          let first = true;
+          for (let lat = -85; lat <= 85; lat += 5) {
+            const p = project(lat, lon, r);
+            if (p.visible) {
+              if (first) { ctx.moveTo(p.x, p.y); first = false; }
+              else { ctx.lineTo(p.x, p.y); }
+            } else {
+              first = true;
+            }
+          }
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.07)';
+          ctx.stroke();
+        }
+      }
+
+      let satAngle = 0;
+      function drawOrbit(r) {
+        satAngle += 0.015;
+        const orbitR = r * 1.32;
+        ctx.save();
+        ctx.beginPath();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.18)';
+        ctx.setLineDash([4, 8]);
+        ctx.ellipse(width / 2, height / 2, orbitR, orbitR * 0.35, -Math.PI / 6, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+
+        const cosA = Math.cos(satAngle);
+        const sinA = Math.sin(satAngle);
+        const tilt = -Math.PI / 6;
+        const ox = orbitR * cosA;
+        const oy = orbitR * 0.35 * sinA;
+        const sx = width / 2 + ox * Math.cos(tilt) - oy * Math.sin(tilt);
+        const sy = height / 2 + ox * Math.sin(tilt) + oy * Math.cos(tilt);
+
+        ctx.beginPath();
+        ctx.arc(sx, sy, 3, 0, Math.PI * 2);
+        ctx.fillStyle = '#38bdf8';
+        ctx.shadowColor = '#38bdf8';
+        ctx.shadowBlur = 10;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+
+      let pulse = 0;
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        const bgGrad = ctx.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, Math.max(width, height) * 0.6);
+        bgGrad.addColorStop(0, 'rgba(14, 23, 42, 0.5)');
+        bgGrad.addColorStop(1, 'rgba(8, 13, 26, 0.98)');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, width, height);
+
+        if (!isWarping) {
+          rotationY += autoSpeed;
+          rotationX += (targetRotX - rotationX) * 0.05;
+        } else {
+          warpScale += (9.0 - warpScale) * 0.065;
+          warpOpacity -= 0.04;
+          autoSpeed += 0.005;
+          rotationY += autoSpeed;
+          if (warpOpacity <= 0) {
+            window.location.href = 'home.html';
+            return;
+          }
+        }
+
+        const curRadius = radius * warpScale;
+        ctx.globalAlpha = Math.max(0, warpOpacity);
+
+        // Atmosphere glow
+        const glow = ctx.createRadialGradient(width / 2, height / 2, curRadius * 0.9, width / 2, height / 2, curRadius * 1.25);
+        glow.addColorStop(0, 'rgba(56, 189, 248, 0.22)');
+        glow.addColorStop(0.5, 'rgba(2, 132, 199, 0.08)');
+        glow.addColorStop(1, 'transparent');
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(width / 2, height / 2, curRadius * 1.25, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Sphere body
+        const sphereGrad = ctx.createRadialGradient(
+          width / 2 - curRadius * 0.35, height / 2 - curRadius * 0.35, curRadius * 0.05,
+          width / 2, height / 2, curRadius
+        );
+        sphereGrad.addColorStop(0, 'rgba(15, 28, 55, 0.85)');
+        sphereGrad.addColorStop(0.7, 'rgba(10, 18, 35, 0.92)');
+        sphereGrad.addColorStop(1, 'rgba(6, 11, 22, 0.98)');
+        ctx.beginPath();
+        ctx.arc(width / 2, height / 2, curRadius, 0, Math.PI * 2);
+        ctx.fillStyle = sphereGrad;
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.35)';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        // Graticule
+        drawGraticule(curRadius);
+
+        // Land points
+        for (let i = 0; i < landPoints.length; i++) {
+          const pt = landPoints[i];
+          const p = project(pt.lat, pt.lon, curRadius);
+          if (p.visible) {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, pt.isTr ? 2.3 : 1.4, 0, Math.PI * 2);
+            ctx.fillStyle = pt.isTr ? '#38bdf8' : 'rgba(148, 163, 184, 0.45)';
+            ctx.fill();
+          }
+        }
+
+        // Ankara / Hacettepe Beacon
+        pulse += 0.05;
+        const ank = project(ankaraPoint.lat, ankaraPoint.lon, curRadius);
+        if (ank.visible) {
+          const pulseR = 9 + (pulse % 2) * 14;
+          const alpha = Math.max(0, 1 - (pulse % 2));
+
+          ctx.beginPath();
+          ctx.arc(ank.x, ank.y, pulseR, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(16, 185, 129, ${alpha})`;
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(ank.x, ank.y, 4, 0, Math.PI * 2);
+          ctx.fillStyle = '#10b981';
+          ctx.shadowColor = '#10b981';
+          ctx.shadowBlur = 10;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          ctx.font = '600 11px Inter, sans-serif';
+          ctx.fillStyle = '#ffffff';
+          ctx.fillText(ankaraPoint.name, ank.x + 12, ank.y - 4);
+        }
+
+        drawOrbit(curRadius);
+
+        ctx.globalAlpha = 1.0;
+        requestAnimationFrame(animate);
+      }
+
+      function enter() {
+        if (isWarping) return;
+        isWarping = true;
+        const ov = document.getElementById('welcomeOverlay');
+        if (ov) {
+          ov.style.transition = 'all 0.4s ease';
+          ov.style.opacity = '0';
+          ov.style.transform = 'scale(1.15)';
+        }
+        const flash = document.getElementById('warpOverlay');
+        if (flash) flash.style.opacity = '1';
+      }
+
+      document.addEventListener('click', enter);
+      document.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' || e.code === 'Enter') enter();
+      });
+
+      animate();
+    })();
+  </script>
 </body>
 </html>
