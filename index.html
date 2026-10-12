@@ -233,7 +233,7 @@
       let radius = Math.min(width, height) * 0.32;
       let rotationY = 0.8;
       let rotationX = 0.32;
-      const autoSpeed = 0.0035; // Sakin, yumuÅŸak dÃ¶nÃ¼ÅŸ hÄ±zÄ±
+      const autoSpeed = 0.0035; // Smooth rotation speed
 
       let targetRotX = rotationX;
       let isWarping = false;
@@ -251,7 +251,7 @@
         targetRotX = 0.32 + normY * 0.2;
       });
 
-      // 3D KÃ¼resel Ä°zdÃ¼ÅŸÃ¼m
+      // 3D Spherical Projection
       function project(latDeg, lonDeg, r) {
         const lat = (latDeg * Math.PI) / 180;
         const lon = (lonDeg * Math.PI) / 180 + rotationY;
@@ -274,11 +274,11 @@
         };
       }
 
-      // Sade ve ÅŸÄ±k enlem-boylam Ã§izgileri
+      // Minimalist graticule lines
       function drawGraticule(r) {
         ctx.lineWidth = 0.7;
 
-        // Enlemler (Paraleller)
+        // Parallels (Latitudes)
         const latitudes = [-60, -30, 0, 30, 60];
         for (let i = 0; i < latitudes.length; i++) {
           const lat = latitudes[i];
@@ -297,7 +297,7 @@
           ctx.stroke();
         }
 
-        // Boylamlar (Meridyenler)
+        // Meridians (Longitudes)
         for (let lon = 0; lon < 360; lon += 30) {
           ctx.beginPath();
           let first = true;
@@ -315,14 +315,14 @@
         }
       }
 
-      // Ankara / Hacettepe Ä°ÅŸaretÃ§isi (39.87Â° N, 32.73Â° E)
+      // Ankara / Hacettepe Marker (39.87 deg N, 32.73 deg E)
       const ankaraCoord = { lat: 39.8657, lon: 32.7339 };
       let pulseCounter = 0;
 
       function animate() {
         ctx.clearRect(0, 0, width, height);
 
-        // Arka plan koyu derinlik
+        // Dark space radial background
         const bgGrad = ctx.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, Math.max(width, height) * 0.6);
         bgGrad.addColorStop(0, 'rgba(14, 23, 42, 0.5)');
         bgGrad.addColorStop(1, 'rgba(8, 13, 26, 0.98)');
@@ -345,7 +345,7 @@
         const curRadius = radius * warpScale;
         ctx.globalAlpha = Math.max(0, warpOpacity);
 
-        // KÃ¼re dÄ±ÅŸ atmosfer parÄ±ltÄ±sÄ± (Halo)
+        // Outer atmospheric halo
         const glow = ctx.createRadialGradient(width / 2, height / 2, curRadius * 0.92, width / 2, height / 2, curRadius * 1.22);
         glow.addColorStop(0, 'rgba(56, 189, 248, 0.18)');
         glow.addColorStop(0.5, 'rgba(2, 132, 199, 0.05)');
@@ -355,7 +355,7 @@
         ctx.arc(width / 2, height / 2, curRadius * 1.22, 0, Math.PI * 2);
         ctx.fill();
 
-        // KÃ¼re gÃ¶vdesi (Temiz ve sade derin kÃ¼re)
+        // Sphere gradient body
         const sphereGrad = ctx.createRadialGradient(
           width / 2 - curRadius * 0.35, height / 2 - curRadius * 0.35, curRadius * 0.05,
           width / 2, height / 2, curRadius
@@ -371,24 +371,24 @@
         ctx.lineWidth = 1.4;
         ctx.stroke();
 
-        // Enlem-Boylam Ã‡izgileri
+        // Graticule grid
         drawGraticule(curRadius);
 
-        // Ankara / Hacettepe NoktasÄ±
+        // Ankara / Hacettepe Marker
         pulseCounter += 0.045;
         const ank = project(ankaraCoord.lat, ankaraCoord.lon, curRadius);
         if (ank.visible) {
           const waveR = 8 + (pulseCounter % 2) * 12;
           const waveA = Math.max(0, 1 - (pulseCounter % 2));
 
-          // Dalga halkasÄ±
+          // Pulse wave ring
           ctx.beginPath();
           ctx.arc(ank.x, ank.y, waveR, 0, Math.PI * 2);
           ctx.strokeStyle = 'rgba(16, 185, 129, ' + waveA + ')';
           ctx.lineWidth = 1.2;
           ctx.stroke();
 
-          // Merkez yeÅŸil nokta
+          // Center green dot
           ctx.beginPath();
           ctx.arc(ank.x, ank.y, 3.5, 0, Math.PI * 2);
           ctx.fillStyle = '#10b981';
@@ -397,7 +397,7 @@
           ctx.fill();
           ctx.shadowBlur = 0;
 
-          // Temiz etiket (Karakter bozukluÄŸu olmadan)
+          // Label text
           ctx.font = '600 11px Inter, sans-serif';
           ctx.fillStyle = '#ffffff';
           ctx.fillText('Ankara - Hacettepe', ank.x + 10, ank.y - 4);
