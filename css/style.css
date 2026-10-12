@@ -620,3 +620,79 @@ h2.section-heading {
     overflow-x: auto;
   }
 }
+
+/* =========================================================
+   ADDITIONAL STYLES: 3-COLUMN SKILLS & B&W MINI COURSE ICONS
+   ========================================================= */
+.skills-grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 1.2rem;
+}
+
+.skill-item-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 11px 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-item-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.skill-title-name {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 3px;
+}
+
+.skill-desc-text {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Course modern table & B&W mini logo */
+.course-title-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.course-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  color: #0f172a;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.course-mini-icon {
+  width: 17px;
+  height: 17px;
+}
+
+@media (max-width: 900px) {
+  .skills-grid-3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .skills-grid-3col {
+    grid-template-columns: 1fr;
+  }
+}
