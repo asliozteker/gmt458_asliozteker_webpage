@@ -180,17 +180,18 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    #warpOverlay {
+        #warpOverlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(8, 13, 26, 0.98) 75%);
+      background: radial-gradient(circle at center, rgba(15, 23, 42, 0.4) 0%, rgba(8, 13, 26, 0.98) 75%);
+      backdrop-filter: blur(0px);
       z-index: 100;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 0.55s ease;
     }
   </style>
 </head>
@@ -411,12 +412,18 @@
         isWarping = true;
         const ov = document.getElementById('welcomeOverlay');
         if (ov) {
-          ov.style.transition = 'all 0.35s ease';
+          ov.style.transition = 'opacity 0.45s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
           ov.style.opacity = '0';
-          ov.style.transform = 'scale(1.1)';
+          ov.style.transform = 'scale(0.95)';
         }
         const flash = document.getElementById('warpOverlay');
-        if (flash) flash.style.opacity = '1';
+        if (flash) {
+          flash.style.opacity = '1';
+          flash.style.backdropFilter = 'blur(6px)';
+        }
+        setTimeout(() => {
+          window.location.href = 'home.html';
+        }, 520);
       }
 
       document.addEventListener('click', enter);
